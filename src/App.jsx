@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import Home from './Pages/Home'
@@ -11,14 +12,20 @@ const bootstrapTheme = {
 }
 
 function App() {
+  const [locale, setLocale] = useState('en')
+
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
+
   return (
     <div
       className="bg-white text-primary min-vh-100 d-flex flex-column"
       style={bootstrapTheme}
     >
-      <Navbar />
-      <Home />
-      <Footer />
+      <Navbar locale={locale} onLocaleChange={setLocale} />
+      <Home locale={locale} />
+      <Footer locale={locale} />
     </div>
   )
 }

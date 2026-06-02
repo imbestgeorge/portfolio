@@ -3,17 +3,6 @@
   position: relative;
 }
 
-.intro-scroll-anchor {
-  position: absolute;
-  left: 0;
-  width: 1px;
-  height: 1px;
-}
-
-.intro-scroll-anchor-education {
-  top: 100vh;
-}
-
 .intro-sticky-frame {
   position: sticky;
   top: 56px;
@@ -60,6 +49,7 @@
 
 .intro-detail-block {
   margin-bottom: 0;
+  scroll-margin-top: 5rem;
 }
 
 .skill-brand-icon {
@@ -68,13 +58,50 @@
   object-fit: contain;
 }
 
+.navbar-language-select {
+  font-size: 1rem;
+  line-height: 1.5;
+  min-width: 7rem;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  text-align: center;
+}
+
+.project-scroll-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .project-scroll {
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
-  padding-bottom: 1rem;
   scroll-padding-inline: 0;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.project-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.project-scrollbar {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  cursor: pointer;
+  height: 0.45rem;
+  position: relative;
+  width: 100%;
+}
+
+.project-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 999px;
+  height: 100%;
+  left: 0;
+  min-width: 44px;
+  position: absolute;
+  top: 0;
 }
 
 .project-scroll-item {
@@ -96,6 +123,14 @@
 .project-cover-image {
   aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+
+.project-cover-video,
+.project-cover-embed {
+  background: #000000;
+  border: 0;
+  border-top-left-radius: var(--bs-card-inner-border-radius);
+  border-top-right-radius: var(--bs-card-inner-border-radius);
 }
 
 .project-cover-carousel .carousel-control-prev,
