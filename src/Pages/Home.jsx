@@ -421,7 +421,7 @@ const experience = [
       en: 'StartUp Barreiro - Internship',
       pt: 'StartUp Barreiro - Estágio',
     },
-    date: 'Mar 2025 - Jun 2025',
+    date: 'Mar 2026 - Jun 2026',
     logo: startupLogo,
     logoAlt: 'Startup logo',
     logoClassName: 'experience-logo-sm',
@@ -582,11 +582,14 @@ function Home({ locale }) {
   useEffect(() => {
     const scroller = projectScrollRef.current
 
-    if (!scroller) {
-      return undefined
-    }
+	    if (!scroller) {
+	      return undefined
+	    }
 
-    const updateProjectScrollbar = () => {
+	    scroller.scrollLeft = 0
+	    projectScrollbarDragRef.current = null
+	
+	    const updateProjectScrollbar = () => {
       const track = projectScrollbarTrackRef.current
 
       if (!track) {
