@@ -94,7 +94,7 @@ const homeText = {
     },
   },
   pt: {
-    heroTitle: 'Bem-vindo ao Portfolio de George Aguiar',
+    heroTitle: 'Bem-vindo ao Portfólio de George Aguiar',
     heroIntro:
       'Apaixonado por desenvolvimento de software, inteligência artificial e robótica. Com o objetivo de construir um mundo totalmente automatizado.',
     viewProjects: 'Ver Projetos',
