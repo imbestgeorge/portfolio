@@ -1,9 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import aesaLogo from '../assets/aesa.png'
+import aivenLogo from '../assets/aiven.png'
+import codexLogo from '../assets/codex.png'
 import cvEngPdf from '../assets/cv-eng.pdf'
 import cvPtPdf from '../assets/cv-pt.pdf'
 import georgeImage from '../assets/george.png'
 import limagroupLogo from '../assets/limagroup.png'
+import resendLogo from '../assets/resend.png'
+import startupLogo from '../assets/startup.png'
+import vercelLogo from '../assets/vercel.png'
 import cpamProject1 from '../assets/Projects/cpam1.png'
 import cpamProject2 from '../assets/Projects/cpam2.png'
 import cpamProject3 from '../assets/Projects/cpam3.png'
@@ -18,13 +23,32 @@ import letsFindPeopleProject1 from '../assets/Projects/letsfindpeople1.png'
 import letsFindPeopleProject2 from '../assets/Projects/letsfindpeople2.png'
 import letsFindPeopleProject3 from '../assets/Projects/letsfindpeople3.png'
 import letsFindPeopleProject4 from '../assets/Projects/letsfindpeople4.png'
-import letsFindPeopleProject5 from '../assets/Projects/letsfindpeople5.png'
 import limagroupProject1 from '../assets/Projects/limagroup1.png'
 import limagroupProject2 from '../assets/Projects/limagroup2.png'
 import limagroupProject3 from '../assets/Projects/limagroup3.png'
 import limagroupProject4 from '../assets/Projects/limagroup4.png'
 import limagroupProject5 from '../assets/Projects/limagroup5.png'
+import luisAnjosHairstylistProject1 from '../assets/Projects/luisanjoshairstylist1.png'
+import luisAnjosHairstylistProject2 from '../assets/Projects/luisanjoshairstylist2.png'
+import luisAnjosHairstylistProject3 from '../assets/Projects/luisanjoshairstylist3.png'
+import luisAnjosHairstylistProject4 from '../assets/Projects/luisanjoshairstylist4.png'
+import luisAnjosHairstylistProject5 from '../assets/Projects/luisanjoshairstylist5.png'
+import susanaGuerreiroCabelereiroProject1 from '../assets/Projects/susanaguerreirocabelereiro1.png'
+import susanaGuerreiroCabelereiroProject2 from '../assets/Projects/susanaguerreirocabelereiro2.png'
+import susanaGuerreiroCabelereiroProject3 from '../assets/Projects/susanaguerreirocabelereiro3.png'
+import susanaGuerreiroCabelereiroProject4 from '../assets/Projects/susanaguerreirocabelereiro4.png'
+import susanaGuerreiroCabelereiroProject5 from '../assets/Projects/susanaguerreirocabelereiro5.png'
+import susanaGuerreiroCabelereiroProject6 from '../assets/Projects/susanaguerreirocabelereiro6.png'
+import susanaGuerreiroCabelereiroProject7 from '../assets/Projects/susanaguerreirocabelereiro7.png'
+import susanaGuerreiroCabelereiroProject8 from '../assets/Projects/susanaguerreirocabelereiro8.png'
 import thunderlimitedVideo from '../assets/thunderlimited.mov'
+import twoKBarbershopProject1 from '../assets/Projects/2kbarbershop1.png'
+import twoKBarbershopProject2 from '../assets/Projects/2kbarbershop2.png'
+import twoKBarbershopProject3 from '../assets/Projects/2kbarbershop3.png'
+import twoKBarbershopProject4 from '../assets/Projects/2kbarbershop4.png'
+import twoKBarbershopProject5 from '../assets/Projects/2kbarbershop5.png'
+import twoKBarbershopProject6 from '../assets/Projects/2kbarbershop6.png'
+import twoKBarbershopProject7 from '../assets/Projects/2kbarbershop7.png'
 import waspeeProject1 from '../assets/Projects/waspee.png'
 import waspeeProject2 from '../assets/Projects/waspee1.png'
 import waspeeProject3 from '../assets/Projects/waspee2.png'
@@ -33,7 +57,17 @@ import waspeeProject4 from '../assets/Projects/waspee3.png'
 const profileImage = georgeImage
 const stackedIntroMediaQuery = '(max-width: 991.98px)'
 
-const projectOptions = ['Software', 'Video Games']
+const projectOptions = ['Software', 'Business', 'Video Games']
+
+const googlePlayConsoleIcon = `data:image/svg+xml,${encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Google-Play-Console-Icon--Streamline-Svg-Logos" height="24" width="24">
+  <desc>
+    Google Play Console Icon Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path fill="#2f80ed" d="M1.351685 21.145075V2.85595c0 -2.0033175 2.193515 -3.255395 3.949365 -2.253l16.030975 9.1442c1.755125 1.00165 1.755125 3.50435 0 4.505275L5.30105 23.39735c-1.7551 1.00165 -3.949365 -0.249675 -3.949365 -2.252275Z" stroke-width="0.25"></path>
+  <path fill="#ccf6ff" d="M17.4025 7.5059 8.979425 12.3563 7.3712 9.507c-0.180325 -0.320225 -0.481225 -0.555025 -0.8357 -0.6521 -0.3549 -0.0996 -0.7348 -0.054725 -1.056725 0.12485L1.351685 11.270925v2.80965L5.7402 11.64325l1.615575 2.863975c0.18065 0.31945 0.489075 0.558125 0.845975 0.65505 0.359625 0.0967 0.7429 0.047325 1.066275 -0.137325l10.60705 -6.1091 -2.472575 -1.40995Z" stroke-width="0.25"></path>
+</svg>
+`)}`
 
 const homeText = {
   en: {
@@ -44,7 +78,7 @@ const homeText = {
     contactMe: 'Contact Me',
     aboutTitle: 'About Me',
     aboutMe:
-      'Fluent in Portuguese and English. Known for attention to detail, organization, punctuality, a strong work ethic, and fast learning. I enjoy solving problems and building practical solutions through technology.',
+      'Fluent in Portuguese and English. Known for attention to detail, organization, punctuality, a strong work ethic, and fast learning. I enjoy building efficient systems.',
     viewCv: 'View CV',
     skillsTitle: 'Skills',
     educationTitle: 'Education',
@@ -55,6 +89,7 @@ const homeText = {
     viewWebsite: 'View Website',
     projectOptions: {
       Software: 'Software',
+      Business: 'Business',
       'Video Games': 'Video Games',
     },
   },
@@ -66,7 +101,7 @@ const homeText = {
     contactMe: 'Contacta-me',
     aboutTitle: 'Sobre Mim',
     aboutMe:
-      'Fluente em português e inglês. Reconhecido pela atenção ao detalhe, organização, pontualidade, forte ética de trabalho e aprendizagem rápida. Gosto de resolver problemas e construir soluções práticas através da tecnologia.',
+      'Fluente em português e inglês. Reconhecido pela atenção ao detalhe, organização, pontualidade, forte ética de trabalho e aprendizagem rápida. Gosto de construir sistemas eficientes.',
     viewCv: 'VER CV',
     skillsTitle: 'Competências',
     educationTitle: 'Educação',
@@ -77,6 +112,7 @@ const homeText = {
     viewWebsite: 'Ver Website',
     projectOptions: {
       Software: 'Software',
+      Business: 'Negócios',
       'Video Games': 'Jogos',
     },
   },
@@ -91,13 +127,21 @@ const technologyIcons = {
   CSS: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
   Bootstrap: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg',
   SCSS: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg',
+  Miro: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/miro.svg',
   TypeScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
   JavaScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
   'Node.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+  Codex: codexLogo,
   Angular: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg',
   React: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+  Supabase: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/supabase.svg',
   PostgreSQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
   MySQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
+  SQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+  Aiven: aivenLogo,
+  Vercel: vercelLogo,
+  Resend: resendLogo,
+  'Google Play Console': googlePlayConsoleIcon,
   Git: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
   GitHub: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
 }
@@ -125,7 +169,7 @@ const projects = [
     category: 'Software',
     description: {
       en: 'A local task marketplace where users can post jobs, hire nearby people, and get paid safely through escrow-based payments.',
-      pt: 'Um marketplace local de tarefas onde os utilizadores podem publicar trabalhos, contratar pessoas próximas e receber pagamentos de forma segura através de pagamentos em escrow.',
+      pt: 'Um mercado local de tarefas onde os utilizadores podem publicar trabalhos, contratar pessoas próximas e receber pagamentos de forma segura através de pagamentos em garantia.',
     },
     galleryImages: [
       { src: waspeeProject1, alt: 'Waspee landing page preview' },
@@ -134,7 +178,7 @@ const projects = [
       { src: waspeeProject4, alt: 'Waspee account dashboard preview' },
     ],
     technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'Node.js', 'MySQL', 'GitHub'],
-    websiteUrl: 'https://waspee-prototype.vercel.app',
+    websiteUrl: 'https://waspee.com',
   },
   {
     title: 'LetsFindPeople',
@@ -159,13 +203,9 @@ const projects = [
       {
         src: letsFindPeopleProject4,
         alt: 'LetsFindPeople profile details preview',
-      },
-      {
-        src: letsFindPeopleProject5,
-        alt: 'LetsFindPeople messaging preview',
-      },
+      }
     ],
-    technologies: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 'GitHub'],
+    technologies: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React', 'Node.js', 'Supabase', 'PostgreSQL', 'GitHub'],
     repoUrl: 'https://github.com/mestregeorge/letsfindpeople',
     websiteUrl: 'https://letsfindpeople.com',
   },
@@ -216,6 +256,104 @@ const projects = [
     websiteUrl: 'https://cpasmoita.pt',
   },
   {
+    title: 'Luis Anjos Hairstylist',
+    category: 'Business',
+    description: {
+      en: 'A polished appointment-focused website for a hairstylist, presenting services, gallery highlights, contact details, and a clear booking path for clients.',
+      pt: 'Um website cuidado e focado em marcações para um hairstylist, com serviços, destaques da galeria, contactos e um caminho claro para os clientes reservarem.',
+    },
+    galleryImages: [
+      {
+        src: luisAnjosHairstylistProject1,
+        alt: 'Luis Anjos Hairstylist home page preview',
+      },
+      {
+        src: luisAnjosHairstylistProject2,
+        alt: 'Luis Anjos Hairstylist services preview',
+      },
+      {
+        src: luisAnjosHairstylistProject3,
+        alt: 'Luis Anjos Hairstylist gallery preview',
+      },
+      {
+        src: luisAnjosHairstylistProject4,
+        alt: 'Luis Anjos Hairstylist booking preview',
+      },
+      {
+        src: luisAnjosHairstylistProject5,
+        alt: 'Luis Anjos Hairstylist contact preview',
+      },
+    ],
+    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://luis-anjos-hairstylist.vercel.app/',
+  },
+  {
+    title: 'Susana Guerreiro Cabelereiro',
+    category: 'Business',
+    description: {
+      en: 'A bright salon website designed to showcase hair services, client results, testimonials, and an easy way to request appointments or budgets.',
+      pt: 'Um website luminoso para salão, pensado para mostrar serviços de cabelo, resultados de clientes, testemunhos e uma forma simples de pedir marcações ou orçamentos.',
+    },
+    galleryImages: [
+      {
+        src: susanaGuerreiroCabelereiroProject1,
+        alt: 'Susana Guerreiro Cabelereiro home page preview',
+      },
+      {
+        src: susanaGuerreiroCabelereiroProject2,
+        alt: 'Susana Guerreiro Cabelereiro about page preview',
+      },
+      {
+        src: susanaGuerreiroCabelereiroProject3,
+        alt: 'Susana Guerreiro Cabelereiro services preview',
+      },
+      {
+        src: susanaGuerreiroCabelereiroProject4,
+        alt: 'Susana Guerreiro Cabelereiro results preview',
+      },
+      {
+        src: susanaGuerreiroCabelereiroProject5,
+        alt: 'Susana Guerreiro Cabelereiro testimonials preview',
+      },
+      {
+        src: susanaGuerreiroCabelereiroProject6,
+        alt: 'Susana Guerreiro Cabelereiro quote form preview',
+      },
+      {
+        src: susanaGuerreiroCabelereiroProject7,
+        alt: 'Susana Guerreiro Cabelereiro FAQ preview',
+      },
+      {
+        src: susanaGuerreiroCabelereiroProject8,
+        alt: 'Susana Guerreiro Cabelereiro contact preview',
+      },
+    ],
+    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://susana-guerreiro-cabelereiro.vercel.app/',
+  },
+  {
+    title: '2K Barbershop',
+    category: 'Business',
+    description: {
+      en: 'A modern barbershop website that highlights services, haircut results, social proof, booking information, and practical contact details for local clients.',
+      pt: 'Um website moderno para barbearia que destaca serviços, resultados de cortes, prova social, informações de marcação e contactos práticos para clientes locais.',
+    },
+    galleryImages: [
+      { src: twoKBarbershopProject1, alt: '2K Barbershop home page preview' },
+      { src: twoKBarbershopProject2, alt: '2K Barbershop about page preview' },
+      { src: twoKBarbershopProject3, alt: '2K Barbershop services preview' },
+      { src: twoKBarbershopProject4, alt: '2K Barbershop results preview' },
+      {
+        src: twoKBarbershopProject5,
+        alt: '2K Barbershop testimonials preview',
+      },
+      { src: twoKBarbershopProject6, alt: '2K Barbershop booking preview' },
+      { src: twoKBarbershopProject7, alt: '2K Barbershop contact preview' },
+    ],
+    technologies: ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://2k-barbershop.vercel.app/',
+  },
+  {
     title: 'Roboface',
     category: 'Video Games',
     description: {
@@ -234,8 +372,8 @@ const projects = [
     title: 'ThunderLimited',
     category: 'Video Games',
     description: {
-      en: 'A store where I sell plugins for Godot 4.6 that simplify features like in-app purchases, AdMob, Google Play services, inventory systems, and more.',
-      pt: 'Uma loja onde vendo plugins para Godot 4.6 que simplificam funcionalidades como compras in-app, AdMob, serviços do Google Play, sistemas de inventário e mais.',
+      en: 'A store where I sell plugins for Godot 4 that simplify features like in-app purchases, AdMob, Google Play services, inventory systems, and more.',
+      pt: 'Uma loja onde vendo plugins para Godot 4 que simplificam funcionalidades como compras in-app, AdMob, serviços do Google Play, sistemas de inventário e mais.',
     },
     media: {
       type: 'video',
@@ -260,6 +398,7 @@ const education = [
 
 const experience = [
   {
+    id: 'limagroup-consulting',
     role: {
       en: 'Software Developer',
       pt: 'Desenvolvedor de Software',
@@ -269,6 +408,23 @@ const experience = [
       pt: 'LimaGroup Consulting - Estágio',
     },
     date: 'Jun 2025 - Jul 2025',
+    logo: limagroupLogo,
+    logoAlt: 'LimaGroup Consulting logo',
+  },
+  {
+    id: 'startup-barreiro',
+    role: {
+      en: 'Software Developer',
+      pt: 'Desenvolvedor de Software',
+    },
+    entity: {
+      en: 'StartUp Barreiro - Internship',
+      pt: 'StartUp Barreiro - Estágio',
+    },
+    date: 'Mar 2025 - Jun 2025',
+    logo: startupLogo,
+    logoAlt: 'Startup logo',
+    logoClassName: 'experience-logo-sm',
   },
 ]
 
@@ -281,13 +437,20 @@ const skillIcons = [
   ['CSS', technologyIcons.CSS],
   ['Bootstrap', technologyIcons.Bootstrap],
   ['SCSS', technologyIcons.SCSS],
+  ['Miro', technologyIcons.Miro],
   ['TypeScript', technologyIcons.TypeScript],
   ['JavaScript', technologyIcons.JavaScript],
   ['Node.js', technologyIcons['Node.js']],
+  ['Codex', technologyIcons.Codex],
   ['Angular', technologyIcons.Angular],
   ['React', technologyIcons.React],
+  ['Supabase', technologyIcons.Supabase],
   ['PostgreSQL', technologyIcons.PostgreSQL],
   ['MySQL', technologyIcons.MySQL],
+  ['Aiven', technologyIcons.Aiven],
+  ['Vercel', technologyIcons.Vercel],
+  ['Resend', technologyIcons.Resend],
+  ['Google Play Console', technologyIcons['Google Play Console']],
   ['Git', technologyIcons.Git],
   ['GitHub', technologyIcons.GitHub],
 ]
@@ -298,20 +461,39 @@ function Home({ locale }) {
   const introSectionRef = useRef(null)
   const introPanelRef = useRef(null)
   const introTrackRef = useRef(null)
-  const projectScrollRef = useRef(null)
-  const projectScrollbarTrackRef = useRef(null)
-  const projectScrollbarDragRef = useRef(null)
-  const [projectScrollbarMetrics, setProjectScrollbarMetrics] = useState({
-    thumbLeft: 0,
-    thumbWidth: 0,
-  })
-  const [selectedProjectOption, setSelectedProjectOption] =
-    useState('Software')
+    const projectScrollRef = useRef(null)
+    const projectScrollbarTrackRef = useRef(null)
+    const projectScrollbarDragRef = useRef(null)
+    const [projectScrollbarMetrics, setProjectScrollbarMetrics] = useState({
+      thumbLeft: 0,
+      thumbWidth: 0,
+    })
+    const [imagePreview, setImagePreview] = useState(null)
+    const [selectedProjectOption, setSelectedProjectOption] =
+      useState('Software')
 
-  const visibleProjects = projects.filter(
-    (project) => project.category === selectedProjectOption,
-  )
-  const showProjectScrollbar = visibleProjects.length >= 4
+    const visibleProjects = projects.filter(
+      (project) => project.category === selectedProjectOption,
+    )
+    const showProjectScrollbar = visibleProjects.length >= 4
+    const activePreviewImage = imagePreview?.images?.[imagePreview.index]
+
+    const updateImagePreviewByStep = useCallback((step) => {
+      setImagePreview((currentPreview) => {
+        if (!currentPreview?.images?.length) {
+          return currentPreview
+        }
+
+        const nextIndex =
+          (currentPreview.index + step + currentPreview.images.length) %
+          currentPreview.images.length
+
+        return {
+          ...currentPreview,
+          index: nextIndex,
+        }
+      })
+    }, [])
 
   useEffect(() => {
     if (!window.location.hash) {
@@ -445,10 +627,10 @@ function Home({ locale }) {
     }
   }, [selectedProjectOption])
 
-  useEffect(() => {
-    const handlePointerMove = (event) => {
-      const drag = projectScrollbarDragRef.current
-      const scroller = projectScrollRef.current
+    useEffect(() => {
+      const handlePointerMove = (event) => {
+        const drag = projectScrollbarDragRef.current
+        const scroller = projectScrollRef.current
 
       if (!drag || !scroller) {
         return
@@ -474,9 +656,41 @@ function Home({ locale }) {
       window.removeEventListener('pointermove', handlePointerMove)
       window.removeEventListener('pointerup', handlePointerUp)
     }
-  }, [])
+    }, [])
 
-  const handleProjectScrollbarPointerDown = (event) => {
+    useEffect(() => {
+      if (!imagePreview) {
+        return undefined
+      }
+
+      const previousOverflow = document.body.style.overflow
+      const handleKeyDown = (event) => {
+        if (event.key === 'Escape') {
+          setImagePreview(null)
+          return
+        }
+
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault()
+          updateImagePreviewByStep(-1)
+        }
+
+        if (event.key === 'ArrowRight') {
+          event.preventDefault()
+          updateImagePreviewByStep(1)
+        }
+      }
+
+      document.body.style.overflow = 'hidden'
+      window.addEventListener('keydown', handleKeyDown)
+
+      return () => {
+        document.body.style.overflow = previousOverflow
+        window.removeEventListener('keydown', handleKeyDown)
+      }
+    }, [imagePreview, updateImagePreviewByStep])
+
+    const handleProjectScrollbarPointerDown = (event) => {
     const scroller = projectScrollRef.current
     const track = projectScrollbarTrackRef.current
 
@@ -632,16 +846,16 @@ function Home({ locale }) {
                         <h2 className="display-6 fw-bold mb-4">{text.experienceTitle}</h2>
                         {experience.map((item) => (
                           <article
-                            className="card border-0 bg-white text-primary intro-info-row"
-                            key={item.role}
+                            className="card border-0 bg-white text-primary intro-info-row experience-card"
+                            key={item.id}
                           >
                             <div className="card-body p-0">
                               <div className="row align-items-center g-0">
-                                <div className="col-auto">
+                                <div className="col-auto experience-logo-col">
                                   <img
-                                    src={limagroupLogo}
-                                    className="img-fluid"
-                                    alt="LimaGroup Consulting logo"
+                                    src={item.logo}
+                                    className={`img-fluid ${item.logoClassName ?? ''}`}
+                                    alt={item.logoAlt}
                                   />
                                 </div>
                                 <div className="col ps-3">
@@ -707,7 +921,9 @@ function Home({ locale }) {
                   project.title === 'LetsFindPeople' ||
                   project.title === 'AESA FCT Docs' ||
                   project.title === 'AESA Inquéritos' ||
-                  project.title === 'CPASM'
+                  project.title === 'CPASM' ||
+                  project.title === 'Luis Anjos Hairstylist' ||
+                  project.title === 'Susana Guerreiro Cabelereiro'
 
                 return (
                   <div className="project-scroll-item" key={project.title}>
@@ -761,14 +977,27 @@ function Home({ locale }) {
                                 }`}
                                 key={image.alt}
                               >
-                                <img
-                                  className="d-block w-100 project-cover-image"
-                                  src={image.src}
-                                  alt={image.alt}
-                                />
-                              </div>
-                            ))}
-                          </div>
+                                  <button
+                                    className="project-image-preview-button"
+                                    type="button"
+                                    onClick={() =>
+                                      setImagePreview({
+                                        images: project.galleryImages,
+                                        index: imageIndex,
+                                        title: project.title,
+                                      })
+                                    }
+                                    aria-label={`Open ${image.alt}`}
+                                  >
+                                    <img
+                                      className="d-block w-100 project-cover-image"
+                                      src={image.src}
+                                      alt={image.alt}
+                                    />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
 
                           <button
                             className="carousel-control-prev"
@@ -872,10 +1101,58 @@ function Home({ locale }) {
             ) : null}
           </div>
         </div>
-      </section>
+        </section>
 
-    </main>
-  )
+        {imagePreview && activePreviewImage ? (
+          <div
+            className="project-image-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={imagePreview.title}
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) {
+                setImagePreview(null)
+              }
+            }}
+          >
+	          <div className="project-image-modal-content">
+	            {imagePreview.images.length > 1 ? (
+                <>
+                  <button
+                    className="project-image-modal-action project-image-modal-prev"
+                    type="button"
+                    onClick={() => updateImagePreviewByStep(-1)}
+                    aria-label={`Previous ${imagePreview.title} image`}
+                  >
+                    <span
+                      className="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                  <button
+                    className="project-image-modal-action project-image-modal-next"
+                    type="button"
+                    onClick={() => updateImagePreviewByStep(1)}
+                    aria-label={`Next ${imagePreview.title} image`}
+                  >
+                    <span
+                      className="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </>
+              ) : null}
+              <img
+                className="project-image-modal-image"
+                src={activePreviewImage.src}
+                alt={activePreviewImage.alt}
+              />
+            </div>
+          </div>
+        ) : null}
+
+      </main>
+    )
 }
 
 export default Home

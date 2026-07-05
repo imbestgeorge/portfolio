@@ -11,8 +11,24 @@ const bootstrapTheme = {
   '--bs-heading-color': '#06224a',
 }
 
+function getInitialLocale() {
+  if (typeof navigator === 'undefined') {
+    return 'en'
+  }
+
+  const browserLanguages = navigator.languages?.length
+    ? navigator.languages
+    : [navigator.language]
+
+  return browserLanguages.some((language) =>
+    language?.toLowerCase().startsWith('pt'),
+  )
+    ? 'pt'
+    : 'en'
+}
+
 function App() {
-  const [locale, setLocale] = useState('en')
+  const [locale, setLocale] = useState(getInitialLocale)
 
   useEffect(() => {
     document.documentElement.lang = locale

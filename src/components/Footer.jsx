@@ -1,24 +1,19 @@
-import cvEngPdf from '../assets/cv-eng.pdf'
-import cvPtPdf from '../assets/cv-pt.pdf'
-
 const footerText = {
   en: {
     location: 'View George Aguiar location on Google Maps',
     email: 'Email George Aguiar',
     phone: 'Call George Aguiar',
-    cv: 'Open George Aguiar CV PDF',
     linkedin: 'Open George Aguiar on LinkedIn',
-    github: 'Open mestregeorge on GitHub',
-    instagram: 'Open georgedeportugal on Instagram',
+    github: 'Open imbestgeorge on GitHub',
+    instagram: 'Open imbestgeorge on Instagram',
   },
   pt: {
     location: 'Ver localização de George Aguiar no Google Maps',
     email: 'Enviar email a George Aguiar',
     phone: 'Ligar para George Aguiar',
-    cv: 'Abrir CV de George Aguiar em PDF',
     linkedin: 'Abrir George Aguiar no LinkedIn',
-    github: 'Abrir mestregeorge no GitHub',
-    instagram: 'Abrir georgedeportugal no Instagram',
+    github: 'Abrir imbestgeorge no GitHub',
+    instagram: 'Abrir imbestgeorge no Instagram',
   },
 }
 
@@ -32,8 +27,8 @@ const contacts = [
   },
   {
     icon: 'bi-envelope-fill',
-    value: 'georgedeportugal@gmail.com',
-    href: 'mailto:georgedeportugal@gmail.com?subject=Portfolio%20contact',
+    value: 'georgeteixeiraaguiar@gmail.com',
+    href: 'mailto:georgeteixeiraaguiar@gmail.com?subject=Portfolio%20contact',
     ariaKey: 'email',
   },
   {
@@ -41,13 +36,6 @@ const contacts = [
     value: '+351 965 103 342',
     href: 'tel:+351965103342',
     ariaKey: 'phone',
-  },
-  {
-    icon: 'bi-file-earmark-person-fill',
-    value: 'CV',
-    href: null,
-    ariaKey: 'cv',
-    external: true,
   },
   {
     icon: 'bi-linkedin',
@@ -58,15 +46,15 @@ const contacts = [
   },
   {
     icon: 'bi-github',
-    value: '@mestregeorge',
-    href: 'https://github.com/mestregeorge',
+    value: '@imbestgeorge',
+    href: 'https://github.com/imbestgeorge',
     ariaKey: 'github',
     external: true,
   },
   {
     icon: 'bi-instagram',
-    value: '@georgedeportugal',
-    href: 'https://www.instagram.com/georgedeportugal',
+    value: '@imbestgeorge',
+    href: 'https://www.instagram.com/imbestgeorge',
     ariaKey: 'instagram',
     external: true,
   },
@@ -74,7 +62,6 @@ const contacts = [
 
 function Footer({ locale }) {
   const text = footerText[locale]
-  const cvPdf = locale === 'pt' ? cvPtPdf : cvEngPdf
 
   return (
     <footer
@@ -82,12 +69,12 @@ function Footer({ locale }) {
       className="bg-primary text-white position-relative mt-auto"
     >
       <div className="container py-4">
-        <div className="row g-3 align-items-center justify-content-center">
+        <div className="row g-3 align-items-center justify-content-center footer-contact-list">
           {contacts.map(({ icon, value, href, ariaKey, external }) => (
-            <div className="col-sm-6 col-lg-auto" key={value}>
+            <div className="col-sm-6 col-lg-auto footer-contact-item" key={value}>
               <a
                 className="d-flex align-items-center justify-content-center gap-2 fw-semibold text-white text-decoration-none footer-contact-link"
-                href={ariaKey === 'cv' ? cvPdf : href}
+                href={href}
                 aria-label={text[ariaKey]}
                 target={external ? '_blank' : undefined}
                 rel={external ? 'noreferrer' : undefined}

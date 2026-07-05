@@ -81,6 +81,20 @@ function Navbar({ locale, onLocaleChange }) {
     window.dispatchEvent(new Event('portfolio:scroll-about'))
   }
 
+  const focusLanguageSelectWithoutScroll = (event) => {
+    const select = event.currentTarget
+
+    if (document.activeElement === select) {
+      return
+    }
+
+    try {
+      select.focus({ preventScroll: true })
+    } catch {
+      select.focus()
+    }
+  }
+
   const handleLocaleChange = (event) => {
     onLocaleChange(event.target.value)
   }
@@ -90,6 +104,9 @@ function Navbar({ locale, onLocaleChange }) {
       className={`form-select border border-2 border-white bg-primary text-white fw-semibold navbar-language-select ${className}`}
       aria-label={text.languageAria}
       value={locale}
+      onMouseDownCapture={focusLanguageSelectWithoutScroll}
+      onPointerDownCapture={focusLanguageSelectWithoutScroll}
+      onTouchStartCapture={focusLanguageSelectWithoutScroll}
       onChange={handleLocaleChange}
       tabIndex={tabIndex}
     >

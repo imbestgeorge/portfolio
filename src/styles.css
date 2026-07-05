@@ -62,6 +62,21 @@ iframe {
   min-width: 0;
 }
 
+.experience-card + .experience-card {
+  margin-top: 2rem;
+}
+
+.experience-logo-col {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 96px;
+}
+
+.intro-info-row img.experience-logo-sm {
+  max-width: 68px;
+}
+
 .intro-mobile-image .intro-profile-image {
   max-width: 16rem;
 }
@@ -217,6 +232,10 @@ iframe {
   min-width: 0;
 }
 
+.footer-contact-item {
+  min-width: 0;
+}
+
 .footer-contact-link span {
   overflow-wrap: anywhere;
 }
@@ -302,6 +321,15 @@ iframe {
   object-fit: cover;
 }
 
+.project-image-preview-button {
+  background: transparent;
+  border: 0;
+  cursor: zoom-in;
+  display: block;
+  padding: 0;
+  width: 100%;
+}
+
 .project-cover-video,
 .project-cover-embed {
   background: #000000;
@@ -315,6 +343,16 @@ iframe {
   width: 14%;
 }
 
+.project-cover-carousel .carousel-control-prev-icon,
+.project-cover-carousel .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.58);
+  background-size: 55%;
+  border-radius: 50%;
+  filter: none;
+  height: 2.25rem;
+  width: 2.25rem;
+}
+
 .project-cover-carousel .carousel-indicators {
   margin-bottom: 0.4rem;
 }
@@ -323,6 +361,75 @@ iframe {
   height: 1.75rem;
   object-fit: contain;
   width: 1.75rem;
+}
+
+.project-image-modal {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 4.5rem;
+  position: fixed;
+  z-index: 2000;
+}
+
+.project-image-modal-content {
+  max-height: calc(100vh - 6rem);
+  max-width: min(calc(100vw - 9rem), 1200px);
+  position: relative;
+}
+
+.project-image-modal-image {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  display: block;
+  max-height: calc(100vh - 6rem);
+  object-fit: contain;
+  width: 100%;
+}
+
+.project-image-modal-action {
+  align-items: center;
+  background: #ffffff;
+  border: 0;
+  border-radius: 50%;
+  color: #06224a;
+  cursor: pointer;
+  display: flex;
+  height: 2.75rem;
+  justify-content: center;
+  position: absolute;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.24);
+  width: 2.75rem;
+  z-index: 1;
+}
+
+.project-image-modal-action::before,
+.project-image-modal-action::after {
+  content: none;
+}
+
+.project-image-modal-action .carousel-control-prev-icon,
+.project-image-modal-action .carousel-control-next-icon {
+  background-size: 55%;
+  filter: invert(1) grayscale(100%);
+  height: 100%;
+  width: 100%;
+}
+
+.project-image-modal-prev,
+.project-image-modal-next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.project-image-modal-prev {
+  left: -3.5rem;
+}
+
+.project-image-modal-next {
+  right: -3.5rem;
 }
 
 @media (max-width: 991.98px) {
@@ -485,6 +592,14 @@ iframe {
     max-width: 72px;
   }
 
+  .experience-logo-col {
+    width: 72px;
+  }
+
+  .intro-info-row img.experience-logo-sm {
+    max-width: 52px;
+  }
+
   .intro-info-row .lead {
     font-size: 1rem;
   }
@@ -501,6 +616,18 @@ iframe {
   .project-tech-icon {
     height: 1.55rem;
     width: 1.55rem;
+  }
+
+  .footer-contact-list {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+    gap: 0.75rem 1rem;
+  }
+
+  .footer-contact-list > .footer-contact-item {
+    flex: 0 1 auto;
+    max-width: 100%;
+    width: auto;
   }
 
   .footer-contact-link {
@@ -526,6 +653,14 @@ iframe {
     max-width: 58px;
   }
 
+  .experience-logo-col {
+    width: 58px;
+  }
+
+  .intro-info-row img.experience-logo-sm {
+    max-width: 44px;
+  }
+
   .intro-info-row .col {
     padding-left: 0.75rem !important;
   }
@@ -541,6 +676,32 @@ iframe {
 
   .project-card .card-body {
     padding: 1rem;
+  }
+
+  .project-image-modal {
+    padding: 3.5rem;
+  }
+
+  .project-image-modal-content {
+    max-height: calc(100vh - 5rem);
+    max-width: calc(100vw - 7rem);
+  }
+
+  .project-image-modal-image {
+    max-height: calc(100vh - 5rem);
+  }
+
+  .project-image-modal-action {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .project-image-modal-next {
+    right: -3rem;
+  }
+
+  .project-image-modal-prev {
+    left: -3rem;
   }
 
   .footer-contact-link {
