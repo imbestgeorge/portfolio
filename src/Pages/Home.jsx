@@ -101,7 +101,7 @@ const homeText = {
     contactMe: 'Contacta-me',
     aboutTitle: 'Sobre Mim',
     aboutMe:
-      'Fluente em português e inglês. Reconhecido pela atenção ao detalhe, organização, pontualidade, forte ética de trabalho e aprendizagem rápida. Gosto de construir sistemas eficientes.',
+      'Fluente em português e inglês. Reconhecido pela atenção ao detalhe, organização, pontualidade, forte ética de trabalho e aprendizagem rápida. Gosto de criar sistemas eficientes.',
     viewCv: 'VER CV',
     skillsTitle: 'Competências',
     educationTitle: 'Educação',
