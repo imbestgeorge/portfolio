@@ -110,9 +110,10 @@ iframe {
 .navbar-language-select {
   font-size: 1rem;
   line-height: 1.5;
-  min-width: 7rem;
+  min-width: 0;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   text-align: center;
+  width: auto !important;
 }
 
 .navbar-contact-button {
@@ -131,7 +132,6 @@ iframe {
 }
 
 .mobile-navbar-language {
-  min-width: 6.75rem;
   width: auto !important;
 }
 
@@ -459,7 +459,6 @@ iframe {
   .navbar-language-select {
     max-width: none;
     text-align: left;
-    width: 100% !important;
   }
 
   .navbar-contact-button {
