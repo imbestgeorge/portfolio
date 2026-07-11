@@ -33,10 +33,10 @@ import luisAnjosHairstylistProject2 from '../assets/Projects/luisanjoshairstylis
 import luisAnjosHairstylistProject3 from '../assets/Projects/luisanjoshairstylist3.png'
 import luisAnjosHairstylistProject4 from '../assets/Projects/luisanjoshairstylist4.png'
 import luisAnjosHairstylistProject5 from '../assets/Projects/luisanjoshairstylist5.png'
+import luisAnjosHairstylistProject6 from '../assets/Projects/luisanjoshairstylist6.png'
 import susanaGuerreiroCabelereiroProject1 from '../assets/Projects/susanaguerreirocabelereiro1.png'
 import susanaGuerreiroCabelereiroProject2 from '../assets/Projects/susanaguerreirocabelereiro2.png'
 import susanaGuerreiroCabelereiroProject3 from '../assets/Projects/susanaguerreirocabelereiro3.png'
-import susanaGuerreiroCabelereiroProject4 from '../assets/Projects/susanaguerreirocabelereiro4.png'
 import susanaGuerreiroCabelereiroProject5 from '../assets/Projects/susanaguerreirocabelereiro5.png'
 import susanaGuerreiroCabelereiroProject6 from '../assets/Projects/susanaguerreirocabelereiro6.png'
 import susanaGuerreiroCabelereiroProject7 from '../assets/Projects/susanaguerreirocabelereiro7.png'
@@ -283,6 +283,10 @@ const projects = [
         src: luisAnjosHairstylistProject5,
         alt: 'Luis Anjos Hairstylist contact preview',
       },
+      {
+        src: luisAnjosHairstylistProject6,
+        alt: 'Luis Anjos Hairstylist team preview',
+      },
     ],
     technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
     websiteUrl: 'https://luis-anjos-hairstylist.vercel.app/',
@@ -306,10 +310,6 @@ const projects = [
       {
         src: susanaGuerreiroCabelereiroProject3,
         alt: 'Susana Guerreiro Cabelereiro services preview',
-      },
-      {
-        src: susanaGuerreiroCabelereiroProject4,
-        alt: 'Susana Guerreiro Cabelereiro results preview',
       },
       {
         src: susanaGuerreiroCabelereiroProject5,
