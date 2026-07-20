@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import aesaLogo from '../assets/aesa.png'
 import aivenLogo from '../assets/aiven.png'
-import codexLogo from '../assets/codex.png'
 import cvEngPdf from '../assets/cv-eng.pdf'
 import cvPtPdf from '../assets/cv-pt.pdf'
 import georgeImage from '../assets/george.png'
@@ -131,7 +130,8 @@ const technologyIcons = {
   TypeScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
   JavaScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
   'Node.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
-  Codex: codexLogo,
+  Python: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+  n8n: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/n8n.svg',
   Angular: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg',
   React: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
   Supabase: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/supabase.svg',
@@ -434,6 +434,7 @@ const skillIcons = [
   ['TypeScript', technologyIcons.TypeScript],
   ['JavaScript', technologyIcons.JavaScript],
   ['Node.js', technologyIcons['Node.js']],
+  ['Python', technologyIcons.Python],
   ['PHP', technologyIcons.PHP],
   ['MySQL', technologyIcons.MySQL],
   ['PostgreSQL', technologyIcons.PostgreSQL],
@@ -447,9 +448,8 @@ const skillIcons = [
   ['Git', technologyIcons.Git],
   ['GitHub', technologyIcons.GitHub],
   ['Aiven', technologyIcons.Aiven],
-  ['Vercel', technologyIcons.Vercel],
+  ['n8n', technologyIcons.n8n],
   ['Resend', technologyIcons.Resend],
-  ['Codex', technologyIcons.Codex],
   ['GDScript', technologyIcons.GDScript],
   ['Google Play Console', technologyIcons['Google Play Console']],
   ['Miro', technologyIcons.Miro],
