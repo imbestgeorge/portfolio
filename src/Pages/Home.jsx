@@ -78,7 +78,7 @@ const homeText = {
     aboutTitle: 'About Me',
     aboutMe:
       'Fluent in Portuguese and English. Known for attention to detail, organization, punctuality, a strong work ethic, and fast learning. I enjoy building efficient systems.',
-    viewCv: 'View CV',
+    viewCv: 'VIEW CV',
     skillsTitle: 'Skills',
     educationTitle: 'Education',
     experienceTitle: 'Work Experience',
