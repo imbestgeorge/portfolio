@@ -12,6 +12,31 @@ const bootstrapTheme = {
   '--bs-heading-color': '#06224a',
 }
 
+const seoContent = {
+  en: {
+    lang: 'en',
+    title: 'George Aguiar | Portfolio',
+    description:
+      'George Aguiar is a software developer focused on artificial intelligence, robotics, automation, and web projects.',
+    ogLocale: 'en_US',
+  },
+  pt: {
+    lang: 'pt-PT',
+    title: 'George Aguiar | Portefólio',
+    description:
+      'George Aguiar é um programador focado em inteligência artificial, robótica, automação e projetos web.',
+    ogLocale: 'pt_PT',
+  },
+}
+
+function updateMetaContent(selector, content) {
+  const metaElement = document.head.querySelector(selector)
+
+  if (metaElement) {
+    metaElement.setAttribute('content', content)
+  }
+}
+
 function getInitialLocale() {
   if (typeof navigator === 'undefined') {
     return 'en'
@@ -32,7 +57,16 @@ function App() {
   const [locale, setLocale] = useState(getInitialLocale)
 
   useEffect(() => {
-    document.documentElement.lang = locale
+    const seo = seoContent[locale]
+
+    document.documentElement.lang = seo.lang
+    document.title = seo.title
+    updateMetaContent('meta[name="description"]', seo.description)
+    updateMetaContent('meta[property="og:title"]', seo.title)
+    updateMetaContent('meta[property="og:description"]', seo.description)
+    updateMetaContent('meta[property="og:locale"]', seo.ogLocale)
+    updateMetaContent('meta[name="twitter:title"]', seo.title)
+    updateMetaContent('meta[name="twitter:description"]', seo.description)
   }, [locale])
 
   return (
