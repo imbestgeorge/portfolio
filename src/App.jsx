@@ -15,14 +15,14 @@ const bootstrapTheme = {
 const seoContent = {
   en: {
     lang: 'en',
-    title: 'George Aguiar | Portfolio',
+    title: 'George Aguiar',
     description:
       'George Aguiar is a software developer focused on artificial intelligence, robotics, automation, and web projects.',
     ogLocale: 'en_US',
   },
   pt: {
     lang: 'pt-PT',
-    title: 'George Aguiar | Portefólio',
+    title: 'George Aguiar',
     description:
       'George Aguiar é um programador focado em inteligência artificial, robótica, automação e projetos web.',
     ogLocale: 'pt_PT',
