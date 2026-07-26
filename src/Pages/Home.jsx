@@ -117,6 +117,21 @@ const homeText = {
   },
 }
 
+const businessText = {
+  en: {
+    ...homeText.en,
+    heroIntro:
+      'Passionate about software development, with 2 years of experience building websites for small businesses across Portugal. Successfully delivered 17 websites that help businesses attract more clients and automate manual tasks.',
+    projectsTitle: 'Some Projects',
+  },
+  pt: {
+    ...homeText.pt,
+    heroIntro:
+      'Apaixonado por desenvolvimento de software, com 2 anos de experiência a criar websites para pequenos negócios em Portugal. Entreguei com sucesso 17 websites que ajudam negócios a atrair mais clientes e a automatizar tarefas manuais.',
+    projectsTitle: 'Alguns Projetos',
+  },
+}
+
 const technologyIcons = {
   C: 'https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg',
   Java: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
@@ -455,45 +470,66 @@ const skillIcons = [
   ['Miro', technologyIcons.Miro],
 ]
 
-function Home({ locale }) {
-  const text = homeText[locale]
+const pageConfigs = {
+  home: {
+    defaultProjectOption: 'Software',
+    fixedProjectCategory: null,
+    showIntroDetails: true,
+    showProjectSelector: true,
+    text: homeText,
+  },
+  business: {
+    defaultProjectOption: 'Business',
+    fixedProjectCategory: 'Business',
+    showIntroDetails: false,
+    showProjectSelector: false,
+    text: businessText,
+  },
+}
+
+function PortfolioPage({ locale, page = 'home' }) {
+  const pageConfig = pageConfigs[page] ?? pageConfigs.home
+  const text = pageConfig.text[locale]
   const cvPdf = locale === 'pt' ? cvPtPdf : cvEngPdf
   const introSectionRef = useRef(null)
   const introPanelRef = useRef(null)
   const introTrackRef = useRef(null)
-    const projectScrollRef = useRef(null)
-    const projectScrollbarTrackRef = useRef(null)
-    const projectScrollbarDragRef = useRef(null)
-    const [projectScrollbarMetrics, setProjectScrollbarMetrics] = useState({
-      thumbLeft: 0,
-      thumbWidth: 0,
+  const projectScrollRef = useRef(null)
+  const projectScrollbarTrackRef = useRef(null)
+  const projectScrollbarDragRef = useRef(null)
+  const [projectScrollbarMetrics, setProjectScrollbarMetrics] = useState({
+    thumbLeft: 0,
+    thumbWidth: 0,
+  })
+  const [imagePreview, setImagePreview] = useState(null)
+  const [selectedProjectOption, setSelectedProjectOption] = useState(
+    pageConfig.defaultProjectOption,
+  )
+
+  const selectedProjectCategory =
+    pageConfig.fixedProjectCategory ?? selectedProjectOption
+  const visibleProjects = projects.filter(
+    (project) => project.category === selectedProjectCategory,
+  )
+  const showProjectScrollbar = visibleProjects.length >= 4
+  const activePreviewImage = imagePreview?.images?.[imagePreview.index]
+
+  const updateImagePreviewByStep = useCallback((step) => {
+    setImagePreview((currentPreview) => {
+      if (!currentPreview?.images?.length) {
+        return currentPreview
+      }
+
+      const nextIndex =
+        (currentPreview.index + step + currentPreview.images.length) %
+        currentPreview.images.length
+
+      return {
+        ...currentPreview,
+        index: nextIndex,
+      }
     })
-    const [imagePreview, setImagePreview] = useState(null)
-    const [selectedProjectOption, setSelectedProjectOption] =
-      useState('Software')
-
-    const visibleProjects = projects.filter(
-      (project) => project.category === selectedProjectOption,
-    )
-    const showProjectScrollbar = visibleProjects.length >= 4
-    const activePreviewImage = imagePreview?.images?.[imagePreview.index]
-
-    const updateImagePreviewByStep = useCallback((step) => {
-      setImagePreview((currentPreview) => {
-        if (!currentPreview?.images?.length) {
-          return currentPreview
-        }
-
-        const nextIndex =
-          (currentPreview.index + step + currentPreview.images.length) %
-          currentPreview.images.length
-
-        return {
-          ...currentPreview,
-          index: nextIndex,
-        }
-      })
-    }, [])
+  }, [])
 
   useEffect(() => {
     if (!window.location.hash) {
@@ -628,7 +664,7 @@ function Home({ locale }) {
       scroller.removeEventListener('scroll', updateProjectScrollbar)
       window.removeEventListener('resize', updateProjectScrollbar)
     }
-  }, [selectedProjectOption])
+  }, [selectedProjectCategory])
 
     useEffect(() => {
       const handlePointerMove = (event) => {
@@ -785,97 +821,99 @@ function Home({ locale }) {
                       </div>
                     </div>
 
-                    <div className="intro-scroll-row intro-details-row">
-                      <div className="intro-detail-block" id="about">
-                        <h2 className="display-6 fw-bold mb-4">{text.aboutTitle}</h2>
-                        <p className="lead fw-semibold mb-0">
-                          {text.aboutMe}{' '}
-                          <a
-                            className="text-primary text-decoration-underline fw-bold"
-                            href={cvPdf}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {text.viewCv} <span aria-hidden="true">→</span>
-                          </a>
-                        </p>
-                      </div>
+                    {pageConfig.showIntroDetails ? (
+                      <div className="intro-scroll-row intro-details-row">
+                        <div className="intro-detail-block" id="about">
+                          <h2 className="display-6 fw-bold mb-4">{text.aboutTitle}</h2>
+                          <p className="lead fw-semibold mb-0">
+                            {text.aboutMe}{' '}
+                            <a
+                              className="text-primary text-decoration-underline fw-bold"
+                              href={cvPdf}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {text.viewCv} <span aria-hidden="true">→</span>
+                            </a>
+                          </p>
+                        </div>
 
-                      <div className="intro-detail-block">
-                        <h2 className="display-6 fw-bold mb-4">{text.skillsTitle}</h2>
-                        <div className="d-flex flex-wrap gap-3">
-                          {skillIcons.map(([label, iconSrc]) => (
-                            <img
-                              className="skill-brand-icon"
-                              src={iconSrc}
-                              alt={label}
-                              title={label}
-                              key={label}
-                            />
+                        <div className="intro-detail-block">
+                          <h2 className="display-6 fw-bold mb-4">{text.skillsTitle}</h2>
+                          <div className="d-flex flex-wrap gap-3">
+                            {skillIcons.map(([label, iconSrc]) => (
+                              <img
+                                className="skill-brand-icon"
+                                src={iconSrc}
+                                alt={label}
+                                title={label}
+                                key={label}
+                              />
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="intro-detail-block" id="education">
+                          <h2 className="display-6 fw-bold mb-4">{text.educationTitle}</h2>
+                          {education.map((item) => (
+                            <article
+                              className="card border-0 bg-white text-primary intro-info-row"
+                              key={item.role}
+                            >
+                              <div className="card-body p-0">
+                                <div className="row align-items-center g-0">
+                                  <div className="col-auto">
+                                    <img
+                                      src={aesaLogo}
+                                      className="img-fluid"
+                                      alt="Escola Secundaria de Santo Andre logo"
+                                    />
+                                  </div>
+                                  <div className="col ps-3">
+                                    <h3 className="lead fw-bold mb-1">
+                                      {item.role[locale]}
+                                    </h3>
+                                    <p className="lead fw-bold mb-1">{item.entity}</p>
+                                    <p className="lead fw-semibold mb-0">{item.date}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                          ))}
+                        </div>
+
+                        <div className="intro-detail-block">
+                          <h2 className="display-6 fw-bold mb-4">{text.experienceTitle}</h2>
+                          {experience.map((item) => (
+                            <article
+                              className="card border-0 bg-white text-primary intro-info-row experience-card"
+                              key={item.id}
+                            >
+                              <div className="card-body p-0">
+                                <div className="row align-items-center g-0">
+                                  <div className="col-auto experience-logo-col">
+                                    <img
+                                      src={item.logo}
+                                      className={`img-fluid ${item.logoClassName ?? ''}`}
+                                      alt={item.logoAlt}
+                                    />
+                                  </div>
+                                  <div className="col ps-3">
+                                    <h3 className="lead fw-bold mb-1">
+                                      {item.role[locale]}
+                                    </h3>
+                                    <p className="lead fw-bold mb-1">
+                                      {item.entity[locale]}
+                                    </p>
+                                    <p className="lead fw-semibold mb-0">{item.date}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
                           ))}
                         </div>
                       </div>
-
-                      <div className="intro-detail-block" id="education">
-                        <h2 className="display-6 fw-bold mb-4">{text.educationTitle}</h2>
-                        {education.map((item) => (
-                          <article
-                            className="card border-0 bg-white text-primary intro-info-row"
-                            key={item.role}
-                          >
-                            <div className="card-body p-0">
-                              <div className="row align-items-center g-0">
-                                <div className="col-auto">
-                                  <img
-                                    src={aesaLogo}
-                                    className="img-fluid"
-                                    alt="Escola Secundaria de Santo Andre logo"
-                                  />
-                                </div>
-                                <div className="col ps-3">
-                                  <h3 className="lead fw-bold mb-1">
-                                    {item.role[locale]}
-                                  </h3>
-                                  <p className="lead fw-bold mb-1">{item.entity}</p>
-                                  <p className="lead fw-semibold mb-0">{item.date}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </article>
-                        ))}
-                      </div>
-
-                      <div className="intro-detail-block">
-                        <h2 className="display-6 fw-bold mb-4">{text.experienceTitle}</h2>
-                        {experience.map((item) => (
-                          <article
-                            className="card border-0 bg-white text-primary intro-info-row experience-card"
-                            key={item.id}
-                          >
-                            <div className="card-body p-0">
-                              <div className="row align-items-center g-0">
-                                <div className="col-auto experience-logo-col">
-                                  <img
-                                    src={item.logo}
-                                    className={`img-fluid ${item.logoClassName ?? ''}`}
-                                    alt={item.logoAlt}
-                                  />
-                                </div>
-                                <div className="col ps-3">
-                                  <h3 className="lead fw-bold mb-1">
-                                    {item.role[locale]}
-                                  </h3>
-                                  <p className="lead fw-bold mb-1">
-                                    {item.entity[locale]}
-                                  </p>
-                                  <p className="lead fw-semibold mb-0">{item.date}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </article>
-                        ))}
-                      </div>
-                    </div>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -897,18 +935,20 @@ function Home({ locale }) {
             <div>
               <h2 className="display-6 fw-bold mb-0 text-white">{text.projectsTitle}</h2>
             </div>
-            <select
-              className="form-select w-auto fw-semibold text-center project-category-select"
-              aria-label={text.projectCategoryLabel}
-              value={selectedProjectOption}
-              onChange={(event) => setSelectedProjectOption(event.target.value)}
-            >
-              {projectOptions.map((option) => (
-                <option className="text-center" value={option} key={option}>
-                  {text.projectOptions[option]}
-                </option>
-              ))}
-            </select>
+            {pageConfig.showProjectSelector ? (
+              <select
+                className="form-select w-auto fw-semibold text-center project-category-select"
+                aria-label={text.projectCategoryLabel}
+                value={selectedProjectOption}
+                onChange={(event) => setSelectedProjectOption(event.target.value)}
+              >
+                {projectOptions.map((option) => (
+                  <option className="text-center" value={option} key={option}>
+                    {text.projectOptions[option]}
+                  </option>
+                ))}
+              </select>
+            ) : null}
           </div>
 
           <div className="project-scroll-shell">
@@ -1158,4 +1198,9 @@ function Home({ locale }) {
     )
 }
 
+function Home({ locale }) {
+  return <PortfolioPage locale={locale} page="home" />
+}
+
+export { PortfolioPage }
 export default Home

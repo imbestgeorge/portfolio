@@ -19,7 +19,7 @@ const navbarText = {
   },
 }
 
-function Navbar({ locale, onLocaleChange }) {
+function Navbar({ locale, onLocaleChange, showAboutLink = true }) {
   const text = navbarText[locale]
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const dropdownRef = useRef(null)
@@ -142,13 +142,15 @@ function Navbar({ locale, onLocaleChange }) {
         <div className="navbar-collapse d-none d-lg-flex" id="portfolioNav">
           <div className="navbar-nav ms-auto align-items-lg-center gap-lg-2 portfolio-navbar-nav">
             {renderLanguageSelect('me-lg-2 w-auto')}
-            <a
-              className="nav-link text-white fw-semibold"
-              href="#about"
-              onClick={handleAboutClick}
-            >
-              {text.about}
-            </a>
+            {showAboutLink ? (
+              <a
+                className="nav-link text-white fw-semibold"
+                href="#about"
+                onClick={handleAboutClick}
+              >
+                {text.about}
+              </a>
+            ) : null}
             <a
               className="nav-link text-white fw-semibold"
               href="#projects"
@@ -174,14 +176,16 @@ function Navbar({ locale, onLocaleChange }) {
         aria-hidden={!isMenuOpen}
       >
         <div className="mobile-nav-dropdown-inner">
-          <a
-            className="mobile-nav-link"
-            href="#about"
-            onClick={handleAboutClick}
-            tabIndex={isMenuOpen ? undefined : -1}
-          >
-            {text.about}
-          </a>
+          {showAboutLink ? (
+            <a
+              className="mobile-nav-link"
+              href="#about"
+              onClick={handleAboutClick}
+              tabIndex={isMenuOpen ? undefined : -1}
+            >
+              {text.about}
+            </a>
+          ) : null}
           <a
             className="mobile-nav-link"
             href="#projects"
