@@ -388,8 +388,8 @@ const projects = [
     title: 'GSR Pinturas Reboco & Betonilha',
     category: 'Business',
     description: {
-      en: 'A service website for painting, rendering, screed, and remodeling work, with service details, project results, testimonials, Instagram highlights, FAQs, and a visit request form.',
-      pt: 'Um website de serviços para pinturas, reboco, betonilha e remodelações, com detalhes de serviços, resultados de obras, testemunhos, destaques do Instagram, FAQs e formulário para pedir visita.',
+      en: 'A service website for painting, rendering, screed, and remodeling work, with service details, project results, FAQs, and a visit request form.',
+      pt: 'Um website de serviços para pinturas, reboco, betonilha e remodelações, com detalhes de serviços, obras realizadas, FAQs e formulário para pedir visita.',
     },
     galleryImages: [
       { src: gsrProject1, alt: 'GSR Pinturas Reboco and Betonilha home page preview' },
@@ -1040,7 +1040,7 @@ function PortfolioPage({ locale, page = 'home' }) {
 
                 return (
                   <div className="project-scroll-item" key={project.title}>
-                    <article className="card h-100 border border-white bg-white text-primary project-card">
+                    <article className="card border border-white bg-white text-primary project-card">
                       {project.media?.type === 'video' ? (
                         <video
                           className="d-block w-100 project-cover-image project-cover-video"

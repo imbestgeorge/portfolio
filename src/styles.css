@@ -259,6 +259,7 @@ iframe {
 }
 
 .project-scroll {
+  align-items: flex-start;
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
@@ -298,7 +299,6 @@ iframe {
 }
 
 .project-card {
-  min-height: 100%;
   overflow: hidden;
 }
 
