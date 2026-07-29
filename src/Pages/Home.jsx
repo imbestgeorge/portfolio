@@ -18,6 +18,10 @@ import fctDocsProject1 from '../assets/Projects/fctDocs0.png'
 import fctDocsProject2 from '../assets/Projects/fctDocs1.png'
 import fctDocsProject3 from '../assets/Projects/fctDocs2.png'
 import fctDocsProject4 from '../assets/Projects/fctDocs3.png'
+import gsrProject1 from '../assets/Projects/gsr1.png'
+import gsrProject2 from '../assets/Projects/gsr2.png'
+import gsrProject3 from '../assets/Projects/gsr3.png'
+import gsrProject4 from '../assets/Projects/gsr4.png'
 import letsFindPeopleProject1 from '../assets/Projects/letsfindpeople1.png'
 import letsFindPeopleProject2 from '../assets/Projects/letsfindpeople2.png'
 import letsFindPeopleProject3 from '../assets/Projects/letsfindpeople3.png'
@@ -33,6 +37,12 @@ import luisAnjosHairstylistProject3 from '../assets/Projects/luisanjoshairstylis
 import luisAnjosHairstylistProject4 from '../assets/Projects/luisanjoshairstylist4.png'
 import luisAnjosHairstylistProject5 from '../assets/Projects/luisanjoshairstylist5.png'
 import luisAnjosHairstylistProject6 from '../assets/Projects/luisanjoshairstylist6.png'
+import mouraProject1 from '../assets/Projects/moura1.png'
+import mouraProject2 from '../assets/Projects/moura2.png'
+import mouraProject3 from '../assets/Projects/moura3.png'
+import mouraProject4 from '../assets/Projects/moura4.png'
+import mouraProject5 from '../assets/Projects/moura5.png'
+import mouraProject6 from '../assets/Projects/moura6.png'
 import susanaGuerreiroCabelereiroProject1 from '../assets/Projects/susanaguerreirocabelereiro1.png'
 import susanaGuerreiroCabelereiroProject2 from '../assets/Projects/susanaguerreirocabelereiro2.png'
 import susanaGuerreiroCabelereiroProject3 from '../assets/Projects/susanaguerreirocabelereiro3.png'
@@ -52,6 +62,12 @@ import waspeeProject1 from '../assets/Projects/waspee.png'
 import waspeeProject2 from '../assets/Projects/waspee1.png'
 import waspeeProject3 from '../assets/Projects/waspee2.png'
 import waspeeProject4 from '../assets/Projects/waspee3.png'
+import vilasBoasVoltProject1 from '../assets/Projects/vilasboas1.png'
+import vilasBoasVoltProject2 from '../assets/Projects/vilasboas2.png'
+import vilasBoasVoltProject3 from '../assets/Projects/vilasboas3.png'
+import vilasBoasVoltProject4 from '../assets/Projects/vilasboas4.png'
+import vilasBoasVoltProject5 from '../assets/Projects/vilasboas5.png'
+import vilasBoasVoltProject6 from '../assets/Projects/vilasboas6.png'
 
 const profileImage = georgeImage
 const stackedIntroMediaQuery = '(max-width: 991.98px)'
@@ -121,13 +137,13 @@ const businessText = {
   en: {
     ...homeText.en,
     heroIntro:
-      'Passionate about software development, with 2 years of experience building websites for small businesses across Portugal. Successfully delivered 17 websites that help businesses attract more clients and automate manual tasks.',
+      'Passionate about software development, with 2 years of experience building websites for small businesses across Portugal.',
     projectsTitle: 'Some Projects',
   },
   pt: {
     ...homeText.pt,
     heroIntro:
-      'Apaixonado por desenvolvimento de software, com 2 anos de experiência a criar websites para pequenos negócios em Portugal. Entreguei com sucesso 17 websites que ajudam negócios a atrair mais clientes e a automatizar tarefas manuais.',
+      'Apaixonado por desenvolvimento de software, com 2 anos de experiência a criar websites para pequenos negócios em Portugal.',
     projectsTitle: 'Alguns Projetos',
   },
 }
@@ -271,40 +287,26 @@ const projects = [
     websiteUrl: 'https://cpasmoita.pt',
   },
   {
-    title: 'Luis Anjos Hairstylist',
+    title: '2K Barbershop',
     category: 'Business',
     description: {
-      en: 'A polished appointment-focused website for a hairstylist, presenting services, gallery highlights, contact details, and a clear booking path for clients.',
-      pt: 'Um website cuidado e focado em marcações para um hairstylist, com serviços, destaques da galeria, contactos e um caminho claro para os clientes reservarem.',
+      en: 'A modern barbershop website that highlights services, haircut results, social proof, booking information, and practical contact details for local clients.',
+      pt: 'Um website moderno para barbearia que destaca serviços, resultados de cortes, prova social, informações de marcação e contactos práticos para clientes locais.',
     },
     galleryImages: [
+      { src: twoKBarbershopProject1, alt: '2K Barbershop home page preview' },
+      { src: twoKBarbershopProject2, alt: '2K Barbershop about page preview' },
+      { src: twoKBarbershopProject3, alt: '2K Barbershop services preview' },
+      { src: twoKBarbershopProject4, alt: '2K Barbershop results preview' },
       {
-        src: luisAnjosHairstylistProject1,
-        alt: 'Luis Anjos Hairstylist home page preview',
+        src: twoKBarbershopProject5,
+        alt: '2K Barbershop testimonials preview',
       },
-      {
-        src: luisAnjosHairstylistProject2,
-        alt: 'Luis Anjos Hairstylist services preview',
-      },
-      {
-        src: luisAnjosHairstylistProject3,
-        alt: 'Luis Anjos Hairstylist gallery preview',
-      },
-      {
-        src: luisAnjosHairstylistProject4,
-        alt: 'Luis Anjos Hairstylist booking preview',
-      },
-      {
-        src: luisAnjosHairstylistProject5,
-        alt: 'Luis Anjos Hairstylist contact preview',
-      },
-      {
-        src: luisAnjosHairstylistProject6,
-        alt: 'Luis Anjos Hairstylist team preview',
-      },
+      { src: twoKBarbershopProject6, alt: '2K Barbershop booking preview' },
+      { src: twoKBarbershopProject7, alt: '2K Barbershop contact preview' },
     ],
-    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
-    websiteUrl: 'https://luis-anjos-hairstylist.vercel.app/',
+    technologies: ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://2k-barbershop.vercel.app/',
   },
   {
     title: 'Susana Guerreiro Cabelereiro',
@@ -347,26 +349,92 @@ const projects = [
     websiteUrl: 'https://susana-guerreiro-cabelereiro.vercel.app/',
   },
   {
-    title: '2K Barbershop',
+    title: 'Luis Anjos Hairstylist',
     category: 'Business',
     description: {
-      en: 'A modern barbershop website that highlights services, haircut results, social proof, booking information, and practical contact details for local clients.',
-      pt: 'Um website moderno para barbearia que destaca serviços, resultados de cortes, prova social, informações de marcação e contactos práticos para clientes locais.',
+      en: 'A polished appointment-focused website for a hairstylist, presenting services, gallery highlights, contact details, and a clear booking path for clients.',
+      pt: 'Um website cuidado e focado em marcações para um hairstylist, com serviços, destaques da galeria, contactos e um caminho claro para os clientes reservarem.',
     },
     galleryImages: [
-      { src: twoKBarbershopProject1, alt: '2K Barbershop home page preview' },
-      { src: twoKBarbershopProject2, alt: '2K Barbershop about page preview' },
-      { src: twoKBarbershopProject3, alt: '2K Barbershop services preview' },
-      { src: twoKBarbershopProject4, alt: '2K Barbershop results preview' },
       {
-        src: twoKBarbershopProject5,
-        alt: '2K Barbershop testimonials preview',
+        src: luisAnjosHairstylistProject1,
+        alt: 'Luis Anjos Hairstylist home page preview',
       },
-      { src: twoKBarbershopProject6, alt: '2K Barbershop booking preview' },
-      { src: twoKBarbershopProject7, alt: '2K Barbershop contact preview' },
+      {
+        src: luisAnjosHairstylistProject2,
+        alt: 'Luis Anjos Hairstylist services preview',
+      },
+      {
+        src: luisAnjosHairstylistProject3,
+        alt: 'Luis Anjos Hairstylist gallery preview',
+      },
+      {
+        src: luisAnjosHairstylistProject4,
+        alt: 'Luis Anjos Hairstylist booking preview',
+      },
+      {
+        src: luisAnjosHairstylistProject5,
+        alt: 'Luis Anjos Hairstylist contact preview',
+      },
+      {
+        src: luisAnjosHairstylistProject6,
+        alt: 'Luis Anjos Hairstylist team preview',
+      },
     ],
-    technologies: ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
-    websiteUrl: 'https://2k-barbershop.vercel.app/',
+    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://luis-anjos-hairstylist.vercel.app/',
+  },
+  {
+    title: 'GSR Pinturas Reboco & Betonilha',
+    category: 'Business',
+    description: {
+      en: 'A service website for painting, rendering, screed, and remodeling work, with service details, project results, testimonials, Instagram highlights, FAQs, and a visit request form.',
+      pt: 'Um website de serviços para pinturas, reboco, betonilha e remodelações, com detalhes de serviços, resultados de obras, testemunhos, destaques do Instagram, FAQs e formulário para pedir visita.',
+    },
+    galleryImages: [
+      { src: gsrProject1, alt: 'GSR Pinturas Reboco and Betonilha home page preview' },
+      { src: gsrProject2, alt: 'GSR Pinturas Reboco and Betonilha booking form preview' },
+      { src: gsrProject3, alt: 'GSR Pinturas Reboco and Betonilha project results preview' },
+      { src: gsrProject4, alt: 'GSR Pinturas Reboco and Betonilha contact page preview' },
+    ],
+    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://gsr-delta.vercel.app/',
+  },
+  {
+    title: 'Pichelaria Fonte da Moura',
+    category: 'Business',
+    description: {
+      en: 'A plumbing website for repairs and bathroom remodeling in Porto, presenting technical services, completed work, flexible booking, contact details, and map access.',
+      pt: 'Um website de pichelaria para reparações e remodelações de casas de banho no Porto, com serviços técnicos, trabalhos realizados, marcação flexível, contactos e acesso ao mapa.',
+    },
+    galleryImages: [
+      { src: mouraProject1, alt: 'Pichelaria Fonte da Moura home page preview' },
+      { src: mouraProject2, alt: 'Pichelaria Fonte da Moura project results preview' },
+      { src: mouraProject3, alt: 'Pichelaria Fonte da Moura services preview' },
+      { src: mouraProject4, alt: 'Pichelaria Fonte da Moura booking preview' },
+      { src: mouraProject5, alt: 'Pichelaria Fonte da Moura contact details preview' },
+      { src: mouraProject6, alt: 'Pichelaria Fonte da Moura map preview' },
+    ],
+    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://pichelaria-moura.vercel.app/',
+  },
+  {
+    title: 'Vilas Boas Volt',
+    category: 'Business',
+    description: {
+      en: 'A bold electrician website for Porto clients needing diagnostics, fault repairs, installations, and condominium work, with strong service sections and a direct booking path.',
+      pt: 'Um website marcante para eletricista no Porto, focado em diagnósticos, reparação de avarias, instalações e condomínios, com secções de serviços claras e marcação direta.',
+    },
+    galleryImages: [
+      { src: vilasBoasVoltProject1, alt: 'Vilas Boas Volt home page preview' },
+      { src: vilasBoasVoltProject2, alt: 'Vilas Boas Volt project results preview' },
+      { src: vilasBoasVoltProject3, alt: 'Vilas Boas Volt services preview' },
+      { src: vilasBoasVoltProject4, alt: 'Vilas Boas Volt booking preview' },
+      { src: vilasBoasVoltProject5, alt: 'Vilas Boas Volt contact details preview' },
+      { src: vilasBoasVoltProject6, alt: 'Vilas Boas Volt mobile page preview' },
+    ],
+    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://vilas-boas.vercel.app/',
   },
   {
     title: 'Roboface',
@@ -966,7 +1034,9 @@ function PortfolioPage({ locale, page = 'home' }) {
                   project.title === 'AESA Inquéritos' ||
                   project.title === 'CPASM' ||
                   project.title === 'Luis Anjos Hairstylist' ||
-                  project.title === 'Susana Guerreiro Cabelereiro'
+                  project.title === 'Susana Guerreiro Cabelereiro' ||
+                  project.title === 'GSR Pinturas Reboco & Betonilha' ||
+                  project.title === 'Pichelaria Fonte da Moura'
 
                 return (
                   <div className="project-scroll-item" key={project.title}>

@@ -38,14 +38,14 @@ const seoContent = {
       lang: 'en',
       title: 'George Aguiar | Business Websites',
       description:
-        'George Aguiar builds websites for small businesses across Portugal, with 2 years of experience and 17 delivered websites that attract clients and automate manual tasks.',
+        'George Aguiar builds websites for small businesses across Portugal, with 2 years of experience.',
       ogLocale: 'en_US',
     },
     pt: {
       lang: 'pt-PT',
       title: 'George Aguiar | Websites para Negócios',
       description:
-        'George Aguiar cria websites para pequenos negócios em Portugal, com 2 anos de experiência e 17 websites entregues para atrair clientes e automatizar tarefas manuais.',
+        'George Aguiar cria websites para pequenos negócios em Portugal, com 2 anos de experiência.',
       ogLocale: 'pt_PT',
     },
   },
