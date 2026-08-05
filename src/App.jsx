@@ -14,7 +14,7 @@ const bootstrapTheme = {
 }
 
 // Change to 'home' to make the original portfolio the root page again.
-const mainPage = 'business'
+const mainPage = 'home'
 
 const seoContent = {
   home: {
@@ -36,14 +36,14 @@ const seoContent = {
   business: {
     en: {
       lang: 'en',
-      title: 'George Aguiar | Business Websites',
+      title: 'George Aguiar',
       description:
         'George Aguiar builds websites for small businesses across Portugal, with 2 years of experience.',
       ogLocale: 'en_US',
     },
     pt: {
       lang: 'pt-PT',
-      title: 'George Aguiar | Websites para Negócios',
+      title: 'George Aguiar',
       description:
         'George Aguiar cria websites para pequenos negócios em Portugal, com 2 anos de experiência.',
       ogLocale: 'pt_PT',

@@ -8,6 +8,12 @@ import limagroupLogo from '../assets/limagroup.png'
 import resendLogo from '../assets/resend.png'
 import startupLogo from '../assets/startup.png'
 import vercelLogo from '../assets/vercel.png'
+import barbeariaCarvalhoProject1 from '../assets/Projects/barbeariacarvalho1.png'
+import barbeariaCarvalhoProject2 from '../assets/Projects/barbeariacarvalho2.png'
+import barbeariaCarvalhoProject3 from '../assets/Projects/barbeariacarvalho3.png'
+import barbeariaCarvalhoProject4 from '../assets/Projects/barbeariacarvalho4.png'
+import barbeariaCarvalhoProject5 from '../assets/Projects/barbeariacarvalho5.png'
+import barbeariaCarvalhoProject6 from '../assets/Projects/barbeariacarvalho6.png'
 import cpamProject1 from '../assets/Projects/cpam1.png'
 import cpamProject2 from '../assets/Projects/cpam2.png'
 import cpamProject3 from '../assets/Projects/cpam3.png'
@@ -26,6 +32,7 @@ import letsFindPeopleProject1 from '../assets/Projects/letsfindpeople1.png'
 import letsFindPeopleProject2 from '../assets/Projects/letsfindpeople2.png'
 import letsFindPeopleProject3 from '../assets/Projects/letsfindpeople3.png'
 import letsFindPeopleProject4 from '../assets/Projects/letsfindpeople4.png'
+import letsFindPeopleProject5 from '../assets/Projects/letsfindpeople5.png'
 import limagroupProject1 from '../assets/Projects/limagroup1.png'
 import limagroupProject2 from '../assets/Projects/limagroup2.png'
 import limagroupProject3 from '../assets/Projects/limagroup3.png'
@@ -234,7 +241,11 @@ const projects = [
       {
         src: letsFindPeopleProject4,
         alt: 'LetsFindPeople profile details preview',
-      }
+      },
+      {
+        src: letsFindPeopleProject5,
+        alt: 'LetsFindPeople keyword management preview',
+      },
     ],
     technologies: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React', 'Node.js', 'Supabase', 'PostgreSQL', 'GitHub'],
     repoUrl: 'https://github.com/mestregeorge/letsfindpeople',
@@ -287,26 +298,25 @@ const projects = [
     websiteUrl: 'https://cpasmoita.pt',
   },
   {
-    title: '2K Barbershop',
+    title: 'Barbearia Carvalho',
     category: 'Business',
     description: {
-      en: 'A modern barbershop website that highlights services, haircut results, social proof, booking information, and practical contact details for local clients.',
-      pt: 'Um website moderno para barbearia que destaca serviços, resultados de cortes, prova social, informações de marcação e contactos práticos para clientes locais.',
+      en: 'A sharp barbershop website with haircut results, testimonials, online booking, service details, and an admin area for appointments and pricing.',
+      pt: 'Um website marcante para barbearia com resultados de cortes, testemunhos, marcação online, serviços e área administrativa para marcações e preços.',
     },
     galleryImages: [
-      { src: twoKBarbershopProject1, alt: '2K Barbershop home page preview' },
-      { src: twoKBarbershopProject2, alt: '2K Barbershop about page preview' },
-      { src: twoKBarbershopProject3, alt: '2K Barbershop services preview' },
-      { src: twoKBarbershopProject4, alt: '2K Barbershop results preview' },
+      { src: barbeariaCarvalhoProject1, alt: 'Barbearia Carvalho home page preview' },
+      { src: barbeariaCarvalhoProject2, alt: 'Barbearia Carvalho haircut results preview' },
+      { src: barbeariaCarvalhoProject3, alt: 'Barbearia Carvalho booking form preview' },
       {
-        src: twoKBarbershopProject5,
-        alt: '2K Barbershop testimonials preview',
+        src: barbeariaCarvalhoProject4,
+        alt: 'Barbearia Carvalho testimonials preview',
       },
-      { src: twoKBarbershopProject6, alt: '2K Barbershop booking preview' },
-      { src: twoKBarbershopProject7, alt: '2K Barbershop contact preview' },
+      { src: barbeariaCarvalhoProject5, alt: 'Barbearia Carvalho admin appointments preview' },
+      { src: barbeariaCarvalhoProject6, alt: 'Barbearia Carvalho admin services preview' },
     ],
-    technologies: ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
-    websiteUrl: 'https://2k-barbershop.vercel.app/',
+    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'PostgreSQL', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://barbearia-carvalho-eight.vercel.app/',
   },
   {
     title: 'Susana Guerreiro Cabelereiro',
@@ -383,6 +393,28 @@ const projects = [
     ],
     technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
     websiteUrl: 'https://luis-anjos-hairstylist.vercel.app/',
+  },
+  {
+    title: '2K Barbershop',
+    category: 'Business',
+    description: {
+      en: 'A modern barbershop website that highlights services, haircut results, social proof, booking information, and practical contact details for local clients.',
+      pt: 'Um website moderno para barbearia que destaca serviços, resultados de cortes, prova social, informações de marcação e contactos práticos para clientes locais.',
+    },
+    galleryImages: [
+      { src: twoKBarbershopProject1, alt: '2K Barbershop home page preview' },
+      { src: twoKBarbershopProject2, alt: '2K Barbershop about page preview' },
+      { src: twoKBarbershopProject3, alt: '2K Barbershop services preview' },
+      { src: twoKBarbershopProject4, alt: '2K Barbershop results preview' },
+      {
+        src: twoKBarbershopProject5,
+        alt: '2K Barbershop testimonials preview',
+      },
+      { src: twoKBarbershopProject6, alt: '2K Barbershop booking preview' },
+      { src: twoKBarbershopProject7, alt: '2K Barbershop contact preview' },
+    ],
+    technologies: ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'React', 'MySQL', 'Aiven', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://2k-barbershop.vercel.app/',
   },
   {
     title: 'GSR Pinturas Reboco & Betonilha',
