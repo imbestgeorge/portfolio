@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import aesaLogo from '../assets/aesa.png'
 import aivenLogo from '../assets/aiven.png'
 import cvEngPdf from '../assets/cv-eng.pdf'
@@ -57,6 +57,11 @@ import susanaGuerreiroCabelereiroProject5 from '../assets/Projects/susanaguerrei
 import susanaGuerreiroCabelereiroProject6 from '../assets/Projects/susanaguerreirocabelereiro6.png'
 import susanaGuerreiroCabelereiroProject7 from '../assets/Projects/susanaguerreirocabelereiro7.png'
 import susanaGuerreiroCabelereiroProject8 from '../assets/Projects/susanaguerreirocabelereiro8.png'
+import theBelfastBarbersProject1 from '../assets/Projects/thebelfastbarbers1.png'
+import theBelfastBarbersProject2 from '../assets/Projects/thebelfastbarbers2.png'
+import theBelfastBarbersProject3 from '../assets/Projects/thebelfastbarbers3.png'
+import theBelfastBarbersProject4 from '../assets/Projects/thebelfastbarbers4.png'
+import theBelfastBarbersProject5 from '../assets/Projects/thebelfastbarbers5.png'
 import thunderlimitedVideo from '../assets/thunderlimited.mov'
 import twoKBarbershopProject1 from '../assets/Projects/2kbarbershop1.png'
 import twoKBarbershopProject2 from '../assets/Projects/2kbarbershop2.png'
@@ -78,6 +83,7 @@ import vilasBoasVoltProject6 from '../assets/Projects/vilasboas6.png'
 
 const profileImage = georgeImage
 const stackedIntroMediaQuery = '(max-width: 991.98px)'
+const susanaGuerreiroProjectTitle = 'Susana Guerreiro Cabelereiro'
 
 const projectOptions = ['Software', 'Business', 'Video Games']
 
@@ -284,7 +290,7 @@ const projects = [
   },
   {
     title: 'CPASM',
-    category: 'Software',
+    category: 'Business',
     description: {
       en: 'A website for a church in Moita, Portugal, where visitors can view information, contacts, schedules, and news.',
       pt: 'Um website para uma igreja na Moita, Portugal, onde visitantes podem ver informações, contactos, horários e notícias.',
@@ -319,7 +325,24 @@ const projects = [
     websiteUrl: 'https://barbearia-carvalho-eight.vercel.app/',
   },
   {
-    title: 'Susana Guerreiro Cabelereiro',
+    title: 'The Belfast Barbers',
+    category: 'Business',
+    description: {
+      en: 'A bold barbershop website for Belfast clients, showcasing fade results, services, Instagram links, online booking, and an admin area for bookings and prices.',
+      pt: 'Um website marcante para barbearia em Belfast, com resultados de fades, serviços, ligação ao Instagram, marcação online e área administrativa para marcações e preços.',
+    },
+    galleryImages: [
+      { src: theBelfastBarbersProject1, alt: 'The Belfast Barbers home page preview' },
+      { src: theBelfastBarbersProject2, alt: 'The Belfast Barbers haircut results preview' },
+      { src: theBelfastBarbersProject3, alt: 'The Belfast Barbers booking form preview' },
+      { src: theBelfastBarbersProject4, alt: 'The Belfast Barbers admin bookings preview' },
+      { src: theBelfastBarbersProject5, alt: 'The Belfast Barbers admin services preview' },
+    ],
+    technologies: ['HTML', 'CSS', 'TypeScript', 'React', 'PostgreSQL', 'Vercel', 'GitHub'],
+    websiteUrl: 'https://the-belfast-barbers.vercel.app/',
+  },
+  {
+    title: susanaGuerreiroProjectTitle,
     category: 'Business',
     description: {
       en: 'A bright salon website designed to showcase hair services, client results, testimonials, and an easy way to request appointments or budgets.',
@@ -500,6 +523,41 @@ const projects = [
   },
 ]
 
+const shuffleProjectList = (projectList) => {
+  const shuffledProjects = [...projectList]
+
+  for (let index = shuffledProjects.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1))
+    const projectToSwap = shuffledProjects[index]
+    shuffledProjects[index] = shuffledProjects[swapIndex]
+    shuffledProjects[swapIndex] = projectToSwap
+  }
+
+  return shuffledProjects
+}
+
+const getVisibleProjects = (category) => {
+  const categoryProjects = projects.filter((project) => project.category === category)
+
+  if (category !== 'Business') {
+    return categoryProjects
+  }
+
+  const shuffledProjects = shuffleProjectList(categoryProjects)
+  const susanaProjectIndex = shuffledProjects.findIndex(
+    (project) => project.title === susanaGuerreiroProjectTitle,
+  )
+
+  if (susanaProjectIndex === -1) {
+    return shuffledProjects
+  }
+
+  const [susanaProject] = shuffledProjects.splice(susanaProjectIndex, 1)
+  shuffledProjects.splice(Math.min(1, shuffledProjects.length), 0, susanaProject)
+
+  return shuffledProjects
+}
+
 const education = [
   {
     role: {
@@ -608,8 +666,9 @@ function PortfolioPage({ locale, page = 'home' }) {
 
   const selectedProjectCategory =
     pageConfig.fixedProjectCategory ?? selectedProjectOption
-  const visibleProjects = projects.filter(
-    (project) => project.category === selectedProjectCategory,
+  const visibleProjects = useMemo(
+    () => getVisibleProjects(selectedProjectCategory),
+    [selectedProjectCategory],
   )
   const showProjectScrollbar = visibleProjects.length >= 4
   const activePreviewImage = imagePreview?.images?.[imagePreview.index]
@@ -1066,7 +1125,7 @@ function PortfolioPage({ locale, page = 'home' }) {
                   project.title === 'AESA Inquéritos' ||
                   project.title === 'CPASM' ||
                   project.title === 'Luis Anjos Hairstylist' ||
-                  project.title === 'Susana Guerreiro Cabelereiro' ||
+                  project.title === susanaGuerreiroProjectTitle ||
                   project.title === 'GSR Pinturas Reboco & Betonilha' ||
                   project.title === 'Pichelaria Fonte da Moura'
 
