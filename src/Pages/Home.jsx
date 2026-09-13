@@ -211,7 +211,7 @@ const projects = [
       { src: limagroupProject5, alt: 'LimaGroup mobile page preview' },
     ],
     technologies: ['HTML', 'SCSS', 'TypeScript', 'Angular', 'Node.js', 'MySQL', 'GitHub'],
-    websiteUrl: 'https://limagroup-consulting.com/',
+    websiteUrl: null,
   },
   {
     title: 'Waspee',
@@ -297,8 +297,8 @@ const projects = [
     title: 'TheSinCheck',
     category: 'Software',
     description: {
-      en: 'A website where users can browse and search common "is it a sin to..." questions with clear, Bible-based answers on everyday topics.',
-      pt: 'Um website onde os utilizadores podem pesquisar perguntas comuns sobre "é pecado..." com respostas claras e baseadas na Bíblia sobre temas do dia a dia.',
+      en: 'A platform where users can browse and search common "is it a sin to..." questions with clear, Bible-based answers on everyday topics.',
+      pt: 'Uma plataforma onde os utilizadores podem pesquisar perguntas comuns sobre "é pecado..." com respostas claras e baseadas na Bíblia sobre temas do dia a dia.',
     },
     galleryImages: [
       { src: theSinCheckProject1, alt: 'TheSinCheck home page preview' },
