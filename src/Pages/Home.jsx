@@ -80,6 +80,11 @@ import vilasBoasVoltProject3 from '../assets/Projects/vilasboas3.png'
 import vilasBoasVoltProject4 from '../assets/Projects/vilasboas4.png'
 import vilasBoasVoltProject5 from '../assets/Projects/vilasboas5.png'
 import vilasBoasVoltProject6 from '../assets/Projects/vilasboas6.png'
+import theSinCheckProject1 from '../assets/Projects/thesincheck1.png'
+import theSinCheckProject2 from '../assets/Projects/thesincheck2.png'
+import theSinCheckProject3 from '../assets/Projects/thesincheck3.png'
+import theSinCheckProject4 from '../assets/Projects/thesincheck4.png'
+import theSinCheckProject5 from '../assets/Projects/thesincheck5.png'
 
 const profileImage = georgeImage
 const stackedIntroMediaQuery = '(max-width: 991.98px)'
@@ -254,7 +259,7 @@ const projects = [
       },
     ],
     technologies: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React', 'Node.js', 'Supabase', 'PostgreSQL', 'GitHub'],
-    repoUrl: 'https://github.com/mestregeorge/letsfindpeople',
+    repoUrl: 'https://github.com/imbestgeorge/letsfindpeople',
     websiteUrl: 'https://letsfindpeople.com',
   },
   {
@@ -287,6 +292,24 @@ const projects = [
     ],
     technologies: ['HTML', 'CSS', 'Bootstrap', 'PHP', 'MySQL', 'GitHub'],
     websiteUrl: 'https://eqavet.aesa.edu.pt/eqavet',
+  },
+  {
+    title: 'TheSinCheck',
+    category: 'Software',
+    description: {
+      en: 'A website where users can browse and search common "is it a sin to..." questions with clear, Bible-based answers on everyday topics.',
+      pt: 'Um website onde os utilizadores podem pesquisar perguntas comuns sobre "é pecado..." com respostas claras e baseadas na Bíblia sobre temas do dia a dia.',
+    },
+    galleryImages: [
+      { src: theSinCheckProject1, alt: 'TheSinCheck home page preview' },
+      { src: theSinCheckProject2, alt: 'TheSinCheck question details preview' },
+      { src: theSinCheckProject3, alt: 'TheSinCheck search results preview' },
+      { src: theSinCheckProject4, alt: 'TheSinCheck answer page preview' },
+      { src: theSinCheckProject5, alt: 'TheSinCheck mobile preview' },
+    ],
+    technologies: ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'React', 'Node.js', 'PostgreSQL', 'GitHub'],
+    repoUrl: 'https://github.com/imbestgeorge/thesincheck',
+    websiteUrl: 'https://www.thesincheck.com/',
   },
   {
     title: 'CPASM',
@@ -777,14 +800,14 @@ function PortfolioPage({ locale, page = 'home' }) {
   useEffect(() => {
     const scroller = projectScrollRef.current
 
-	    if (!scroller) {
-	      return undefined
-	    }
+    if (!scroller) {
+      return undefined
+    }
 
-	    scroller.scrollLeft = 0
-	    projectScrollbarDragRef.current = null
-	
-	    const updateProjectScrollbar = () => {
+    scroller.scrollLeft = 0
+    projectScrollbarDragRef.current = null
+
+    const updateProjectScrollbar = () => {
       const track = projectScrollbarTrackRef.current
 
       if (!track) {
@@ -825,10 +848,10 @@ function PortfolioPage({ locale, page = 'home' }) {
     }
   }, [selectedProjectCategory])
 
-    useEffect(() => {
-      const handlePointerMove = (event) => {
-        const drag = projectScrollbarDragRef.current
-        const scroller = projectScrollRef.current
+  useEffect(() => {
+    const handlePointerMove = (event) => {
+      const drag = projectScrollbarDragRef.current
+      const scroller = projectScrollRef.current
 
       if (!drag || !scroller) {
         return
@@ -854,41 +877,41 @@ function PortfolioPage({ locale, page = 'home' }) {
       window.removeEventListener('pointermove', handlePointerMove)
       window.removeEventListener('pointerup', handlePointerUp)
     }
-    }, [])
+  }, [])
 
-    useEffect(() => {
-      if (!imagePreview) {
-        return undefined
+  useEffect(() => {
+    if (!imagePreview) {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setImagePreview(null)
+        return
       }
 
-      const previousOverflow = document.body.style.overflow
-      const handleKeyDown = (event) => {
-        if (event.key === 'Escape') {
-          setImagePreview(null)
-          return
-        }
-
-        if (event.key === 'ArrowLeft') {
-          event.preventDefault()
-          updateImagePreviewByStep(-1)
-        }
-
-        if (event.key === 'ArrowRight') {
-          event.preventDefault()
-          updateImagePreviewByStep(1)
-        }
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault()
+        updateImagePreviewByStep(-1)
       }
 
-      document.body.style.overflow = 'hidden'
-      window.addEventListener('keydown', handleKeyDown)
-
-      return () => {
-        document.body.style.overflow = previousOverflow
-        window.removeEventListener('keydown', handleKeyDown)
+      if (event.key === 'ArrowRight') {
+        event.preventDefault()
+        updateImagePreviewByStep(1)
       }
-    }, [imagePreview, updateImagePreviewByStep])
+    }
 
-    const handleProjectScrollbarPointerDown = (event) => {
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [imagePreview, updateImagePreviewByStep])
+
+  const handleProjectScrollbarPointerDown = (event) => {
     const scroller = projectScrollRef.current
     const track = projectScrollbarTrackRef.current
 
@@ -915,7 +938,7 @@ function PortfolioPage({ locale, page = 'home' }) {
     const clickedThumb =
       pointerX >= projectScrollbarMetrics.thumbLeft &&
       pointerX <=
-        projectScrollbarMetrics.thumbLeft + projectScrollbarMetrics.thumbWidth
+      projectScrollbarMetrics.thumbLeft + projectScrollbarMetrics.thumbWidth
 
     if (!clickedThumb) {
       const thumbLeft = Math.min(
@@ -1127,7 +1150,8 @@ function PortfolioPage({ locale, page = 'home' }) {
                   project.title === 'Luis Anjos Hairstylist' ||
                   project.title === susanaGuerreiroProjectTitle ||
                   project.title === 'GSR Pinturas Reboco & Betonilha' ||
-                  project.title === 'Pichelaria Fonte da Moura'
+                  project.title === 'Pichelaria Fonte da Moura' ||
+                  project.title === 'TheSinCheck'
 
                 return (
                   <div className="project-scroll-item" key={project.title}>
@@ -1152,9 +1176,8 @@ function PortfolioPage({ locale, page = 'home' }) {
                       ) : (
                         <div
                           id={carouselId}
-                          className={`carousel slide project-cover-carousel ${
-                            useDarkCarouselControls ? 'carousel-dark' : ''
-                          }`}
+                          className={`carousel slide project-cover-carousel ${useDarkCarouselControls ? 'carousel-dark' : ''
+                            }`}
                           aria-label={`${project.title} preview carousel`}
                         >
                           <div className="carousel-indicators">
@@ -1165,9 +1188,8 @@ function PortfolioPage({ locale, page = 'home' }) {
                                 data-bs-slide-to={imageIndex}
                                 className={imageIndex === 0 ? 'active' : undefined}
                                 aria-current={imageIndex === 0 ? 'true' : undefined}
-                                aria-label={`${project.title} preview ${
-                                  imageIndex + 1
-                                }`}
+                                aria-label={`${project.title} preview ${imageIndex + 1
+                                  }`}
                                 key={image.alt}
                               ></button>
                             ))}
@@ -1176,32 +1198,31 @@ function PortfolioPage({ locale, page = 'home' }) {
                           <div className="carousel-inner">
                             {project.galleryImages.map((image, imageIndex) => (
                               <div
-                                className={`carousel-item ${
-                                  imageIndex === 0 ? 'active' : ''
-                                }`}
+                                className={`carousel-item ${imageIndex === 0 ? 'active' : ''
+                                  }`}
                                 key={image.alt}
                               >
-                                  <button
-                                    className="project-image-preview-button"
-                                    type="button"
-                                    onClick={() =>
-                                      setImagePreview({
-                                        images: project.galleryImages,
-                                        index: imageIndex,
-                                        title: project.title,
-                                      })
-                                    }
-                                    aria-label={`Open ${image.alt}`}
-                                  >
-                                    <img
-                                      className="d-block w-100 project-cover-image"
-                                      src={image.src}
-                                      alt={image.alt}
-                                    />
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
+                                <button
+                                  className="project-image-preview-button"
+                                  type="button"
+                                  onClick={() =>
+                                    setImagePreview({
+                                      images: project.galleryImages,
+                                      index: imageIndex,
+                                      title: project.title,
+                                    })
+                                  }
+                                  aria-label={`Open ${image.alt}`}
+                                >
+                                  <img
+                                    className="d-block w-100 project-cover-image"
+                                    src={image.src}
+                                    alt={image.alt}
+                                  />
+                                </button>
+                              </div>
+                            ))}
+                          </div>
 
                           <button
                             className="carousel-control-prev"
@@ -1305,58 +1326,58 @@ function PortfolioPage({ locale, page = 'home' }) {
             ) : null}
           </div>
         </div>
-        </section>
+      </section>
 
-        {imagePreview && activePreviewImage ? (
-          <div
-            className="project-image-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label={imagePreview.title}
-            onMouseDown={(event) => {
-              if (event.target === event.currentTarget) {
-                setImagePreview(null)
-              }
-            }}
-          >
-	          <div className="project-image-modal-content">
-	            {imagePreview.images.length > 1 ? (
-                <>
-                  <button
-                    className="project-image-modal-action project-image-modal-prev"
-                    type="button"
-                    onClick={() => updateImagePreviewByStep(-1)}
-                    aria-label={`Previous ${imagePreview.title} image`}
-                  >
-                    <span
-                      className="carousel-control-prev-icon"
-                      aria-hidden="true"
-                    ></span>
-                  </button>
-                  <button
-                    className="project-image-modal-action project-image-modal-next"
-                    type="button"
-                    onClick={() => updateImagePreviewByStep(1)}
-                    aria-label={`Next ${imagePreview.title} image`}
-                  >
-                    <span
-                      className="carousel-control-next-icon"
-                      aria-hidden="true"
-                    ></span>
-                  </button>
-                </>
-              ) : null}
-              <img
-                className="project-image-modal-image"
-                src={activePreviewImage.src}
-                alt={activePreviewImage.alt}
-              />
-            </div>
+      {imagePreview && activePreviewImage ? (
+        <div
+          className="project-image-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={imagePreview.title}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              setImagePreview(null)
+            }
+          }}
+        >
+          <div className="project-image-modal-content">
+            {imagePreview.images.length > 1 ? (
+              <>
+                <button
+                  className="project-image-modal-action project-image-modal-prev"
+                  type="button"
+                  onClick={() => updateImagePreviewByStep(-1)}
+                  aria-label={`Previous ${imagePreview.title} image`}
+                >
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+                <button
+                  className="project-image-modal-action project-image-modal-next"
+                  type="button"
+                  onClick={() => updateImagePreviewByStep(1)}
+                  aria-label={`Next ${imagePreview.title} image`}
+                >
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              </>
+            ) : null}
+            <img
+              className="project-image-modal-image"
+              src={activePreviewImage.src}
+              alt={activePreviewImage.alt}
+            />
           </div>
-        ) : null}
+        </div>
+      ) : null}
 
-      </main>
-    )
+    </main>
+  )
 }
 
 function Home({ locale }) {
