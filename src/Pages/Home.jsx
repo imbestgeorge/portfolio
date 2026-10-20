@@ -4,9 +4,11 @@ import aivenLogo from '../assets/aiven.png'
 import cvEngPdf from '../assets/cv-eng.pdf'
 import cvPtPdf from '../assets/cv-pt.pdf'
 import georgeImage from '../assets/george.png'
+import kfcLogo from '../assets/kfc.png'
 import limagroupLogo from '../assets/limagroup.png'
 import resendLogo from '../assets/resend.png'
 import startupLogo from '../assets/startup.png'
+import unipsLogo from '../assets/unips.png'
 import vercelLogo from '../assets/vercel.png'
 import barbeariaCarvalhoProject1 from '../assets/Projects/barbeariacarvalho1.png'
 import barbeariaCarvalhoProject2 from '../assets/Projects/barbeariacarvalho2.png'
@@ -584,28 +586,50 @@ const getVisibleProjects = (category) => {
 const education = [
   {
     role: {
+      en: 'Automation, Robotics and Industrial Control',
+      pt: 'Automação, Robótica e Controlo Industrial',
+    },
+    entity: {
+      en: 'Polytechnic University of Setúbal',
+      pt: 'Universidade Politécnica de Setúbal',
+    },
+    date: '2026 - 2028',
+    logo: unipsLogo,
+    logoAlt: 'Universidade Politécnica de Setúbal logo',
+  },
+  {
+    role: {
       en: 'Computer Systems Technician',
       pt: 'Técnico de Sistemas Informáticos',
     },
-    entity: 'Escola Secundária de Santo André',
+    entity: {
+      en: 'Secondary School of Santo André',
+      pt: 'Escola Secundária de Santo André',
+    },
     date: '2023 - 2026',
+    logo: aesaLogo,
+    logoAlt: 'Escola Secundaria de Santo Andre logo',
   },
 ]
 
 const experience = [
   {
-    id: 'limagroup-consulting',
+    id: 'kfc',
     role: {
-      en: 'Software Developer',
-      pt: 'Desenvolvedor de Software',
+      en: 'Kitchen Team Member',
+      pt: 'Operador de Cozinha',
     },
     entity: {
-      en: 'LimaGroup Consulting - Internship',
-      pt: 'LimaGroup Consulting - Estágio',
+      en: 'KFC',
+      pt: 'KFC',
     },
-    date: 'Jun 2025 - Jul 2025',
-    logo: limagroupLogo,
-    logoAlt: 'LimaGroup Consulting logo',
+    date: {
+      en: 'Sep 2026 - Nov 2026',
+      pt: 'Set 2026 - Nov 2026',
+    },
+    logo: kfcLogo,
+    logoAlt: 'KFC logo',
+    logoClassName: 'experience-logo-sm',
   },
   {
     id: 'startup-barreiro',
@@ -621,6 +645,20 @@ const experience = [
     logo: startupLogo,
     logoAlt: 'Startup logo',
     logoClassName: 'experience-logo-sm',
+  },
+  {
+    id: 'limagroup-consulting',
+    role: {
+      en: 'Software Developer',
+      pt: 'Desenvolvedor de Software',
+    },
+    entity: {
+      en: 'LimaGroup Consulting - Internship',
+      pt: 'LimaGroup Consulting - Estágio',
+    },
+    date: 'Jun 2025 - Jul 2025',
+    logo: limagroupLogo,
+    logoAlt: 'LimaGroup Consulting logo',
   },
 ]
 
@@ -1039,24 +1077,24 @@ function PortfolioPage({ locale, page = 'home' }) {
                           <h2 className="display-6 fw-bold mb-4">{text.educationTitle}</h2>
                           {education.map((item) => (
                             <article
-                              className="card border-0 bg-white text-primary intro-info-row"
-                              key={item.role}
+                              className="card border-0 bg-white text-primary intro-info-row experience-card"
+                              key={item.role.en}
                             >
                               <div className="card-body p-0">
                                 <div className="row align-items-center g-0">
-                                  <div className="col-auto">
+                                  <div className="col-auto experience-logo-col">
                                     <img
-                                      src={aesaLogo}
-                                      className="img-fluid"
-                                      alt="Escola Secundaria de Santo Andre logo"
+                                      src={item.logo}
+                                      className={`img-fluid ${item.logoClassName ?? ''}`}
+                                      alt={item.logoAlt}
                                     />
                                   </div>
                                   <div className="col ps-3">
                                     <h3 className="lead fw-bold mb-1">
                                       {item.role[locale]}
                                     </h3>
-                                    <p className="lead fw-bold mb-1">{item.entity}</p>
-                                    <p className="lead fw-semibold mb-0">{item.date}</p>
+                                    <p className="lead fw-bold mb-1">{item.entity[locale]}</p>
+                                    <p className="lead fw-semibold mb-0">{item.date?.[locale] ?? item.date}</p>
                                   </div>
                                 </div>
                               </div>
@@ -1087,7 +1125,7 @@ function PortfolioPage({ locale, page = 'home' }) {
                                     <p className="lead fw-bold mb-1">
                                       {item.entity[locale]}
                                     </p>
-                                    <p className="lead fw-semibold mb-0">{item.date}</p>
+                                    <p className="lead fw-semibold mb-0">{item.date?.[locale] ?? item.date}</p>
                                   </div>
                                 </div>
                               </div>
